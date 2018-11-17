@@ -38,6 +38,7 @@ namespace KasaKontrol
 
         private void dataGridView1_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
+            
             Rectangle displayRectangle = this.dataGridView1.DisplayRectangle;
             displayRectangle.Height = this.dataGridView1.ColumnHeadersHeight / 2;
             this.dataGridView1.Invalidate(displayRectangle);
@@ -48,14 +49,19 @@ namespace KasaKontrol
         private void dataGridView1_Paint(object sender, PaintEventArgs e)
         {
             string[] strArray = new string[] { "Günük Satış", "Veresiye Satış", "Veresiye Tahsilat", "K.Kartı Satış", "Kapora" };
+
+            Rectangle rect = new Rectangle();
+            Rectangle rectangle2 = new Rectangle();
+            rect.Width = 0;
+            rect.Height = 0;
             for (int i = 0; i < 15; i += 3)
             {
-                Rectangle rect = this.dataGridView1.GetCellDisplayRectangle(i + 1, -1, true);
-                Rectangle rectangle2 = this.dataGridView1.GetCellDisplayRectangle(i + 1, -1, true);
+                rect = this.dataGridView1.GetCellDisplayRectangle(i + 1, -1, true);
+                rectangle2 = this.dataGridView1.GetCellDisplayRectangle(i + 1, -1, true);
                 int width = rectangle2.Width;
                 rect.X += 1;
                 rect.Y += 1;
-                rect.Width = rect.Width * 3 - 2;
+                rect.Width = rect.Width * 5/2 +10 ;
                 rect.Height = rect.Height / 2 - 2;
 
                /* Rectangle*rectanglePtr1 = (Rectangle*)ref rect;
@@ -89,15 +95,16 @@ namespace KasaKontrol
 
         private void Sorgula2_Load(object sender, EventArgs e)
         {
-           
-            SayfayıDoldur();
+            bool tarihBazli = false;
+            SayfayıDoldur(tarihBazli);
         }
 
-        private void SayfayıDoldur()
+        private void SayfayıDoldur(bool tarihBazli)
         {
             DatabaseClass database = new DatabaseClass();
-            datagrid1Doldur(database);
-            datagrid2Doldur(database);
+
+            datagrid1Doldur(database, tarihBazli);
+            datagrid2Doldur(database, tarihBazli);
             toplamGoster();
             veresiyeDurumu();
             int num = 0;
@@ -316,9 +323,18 @@ namespace KasaKontrol
 
         }
 
-        private void datagrid2Doldur(DatabaseClass database)
+        private void datagrid2Doldur(DatabaseClass database, bool tarihBazli)
         {
-            string sorgu = "Select * FROM `para_degerleri_giderler` ";
+            string sorgu = "";
+            dataGridView2.Rows.Clear();
+            if (tarihBazli)
+            {
+                sorgu = "Select * FROM `para_degerleri_giderler` ";
+            }
+            else
+            {
+                sorgu = "Select * FROM `para_degerleri_giderler` ";
+            }
             int num = 0;
             foreach (ParaDegerleriGider gider in database.giderDegerleri(sorgu))
             {
@@ -421,15 +437,36 @@ namespace KasaKontrol
                     this.dataGridView2.ColumnWidthChanged += new DataGridViewColumnEventHandler(this.dataGridView2_ColumnWidthChanged);
                     return;
                 }
-                this.dataGridView2.Columns[num3].Width = 0x2d;
+                this.dataGridView2.Columns[num3].Width = 2;
                 num3++;
             }
 
         }
 
-        private void datagrid1Doldur(DatabaseClass database)
-        {           
-            string sorgu = "Select * FROM `para_degerleri` ";
+        private void datagrid1Doldur(DatabaseClass database, bool tarihBazli)
+        {
+            
+            string sorgu = "";
+            dataGridView1.Rows.Clear();
+
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "yyyy-m-d";
+
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = "yyyy-m-d";
+
+            String tarih1 = dateTimePicker1.Text;
+            String tarih2 = dateTimePicker2.Text;
+
+            if (tarihBazli)
+            {
+           sorgu = "SELECT `ID`, `TL`, `DOLAR`, `EURO`, `Tarih`, `P_ID` FROM `para_degerleri` WHERE Tarih between '"+ tarih1 + "' and '"+tarih2+"'";
+            }
+            else
+            {
+                sorgu = "Select * FROM `para_degerleri` ";
+            } 
+            
             int num = 0;
             foreach (ParaDegerleriGelir gelir in database.gelirDegerleri(sorgu))
             {
@@ -548,14 +585,18 @@ namespace KasaKontrol
         private void dataGridView2_Paint(object sender, PaintEventArgs e)
         {
             string[] strArray = new string[] { "Dükkan Giderleri", "İade Alınan", "Firma Ödemeleri", "Peşin Alınan Ödeme", "Resul D. Ödeme", "Eleman 1", "Eleman 2" };
-            for (int i = 0; i < 0x15; i += 3)
+            Rectangle rect = new Rectangle();
+            Rectangle rectangle2 = new Rectangle();
+            for (int i = 0; i < 21; i += 3)
             {
-                Rectangle rect = this.dataGridView1.GetCellDisplayRectangle(i + 1, -1, true);
-                Rectangle rectangle2 = this.dataGridView1.GetCellDisplayRectangle(i + 1, -1, true);
-                int width = rectangle2.Width;
+                
+                rect = this.dataGridView2.GetCellDisplayRectangle(i + 1, -1, true);
+                rectangle2 = this.dataGridView2.GetCellDisplayRectangle(i + 1, -1, true);
+                // int width = rectangle2.Width;
+                
                 rect.X += 1;
                 rect.Y += 1;
-                rect.Width = rect.Width * 3 - 2;
+                rect.Width = rect.Width * 5 / 2 + 10;
                 rect.Height = rect.Height / 2 - 2;
 
                 /* Rectangle*rectanglePtr1 = (Rectangle*)ref rect;
@@ -573,7 +614,9 @@ namespace KasaKontrol
                     LineAlignment = StringAlignment.Center
                 };
                 e.Graphics.DrawString(strArray[i / 3], this.dataGridView2.ColumnHeadersDefaultCellStyle.Font, new SolidBrush(this.dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor), rect, format);
+                
             }
+
 
         }
 
@@ -592,14 +635,25 @@ namespace KasaKontrol
                 if ((e.Value != null) && (Convert.ToDouble(e.Value.ToString()) < 0.0))
                 {
                     e.CellStyle.BackColor = Color.Red;
-                    e.CellStyle.SelectionBackColor = Color.Yellow;
-                    e.CellStyle.SelectionForeColor = Color.Black;
+                    //e.CellStyle.SelectionBackColor = Color.Yellow;
+                    //e.CellStyle.SelectionForeColor = Color.Black;
                 }
             }
             catch (Exception)
             {
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            bool tarihBazli = true;
+            SayfayıDoldur(tarihBazli);
         }
     }
 }

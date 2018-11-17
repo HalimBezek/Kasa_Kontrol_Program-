@@ -119,5 +119,14 @@ namespace KasaKontrol
             
                
         }
+
+        
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Sorgula2 s = new Sorgula2();
+
+            s.Show();
+        }
     }
 }

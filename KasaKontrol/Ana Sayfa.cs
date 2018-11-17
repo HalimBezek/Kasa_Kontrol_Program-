@@ -120,9 +120,41 @@ namespace KasaKontrol
             string dbAy = ay + "/" + yil;
             
             DatabaseClass database = new DatabaseClass();
-            string mesaj = database.kayitEkle(tarih, dbAy, gunlukKasaEU, gunlukKasaD, gunlukKasaTL,yil);
+            try
+            {
 
-            MessageBox.Show(mesaj, "Bilgilendirme");
+             //TOPLAM VE ORTALAMA DEĞERLERİN KAYDEDİLDİĞİ METOT
+            database.kayitEkle(tarih, dbAy, gunlukKasaEU, gunlukKasaD, gunlukKasaTL,yil);
+
+            //GİDERLERİN KAYDEDİLMESİ
+            string mesaj11 = database.kayitEkleDGiderleri(tarih, dukkangiderleriEU, dukkangiderleriDolar, dukkangiderleriTL, 1);
+            string mesaj12 = database.kayitEkleIAlinan(tarih, iadealinanEU, iadealinanDolar, iadealinanTL, 2);
+            string mesaj13 = database.kayitEkleFOdemeleri(tarih, firmaödemeleriEU, firmaödemeleriDolar, firmaödemeleriTL, 3);
+            string mesaj14 = database.kayitEklePAlinanO(tarih, pesinalinanödemeEU, pesinalinanödemeDolar, pesinalinanödemeTL, 4);
+            string mesaj15 = database.kayitEkleR_D_Odemeler(tarih, resuldödemeEU, resuldödemeDolar, resuldödemeTL, 5);
+            string mesaj16 = database.kayitEkleEleman1(tarih, eleman1EU, eleman1Dolar, eleman1TL, 6);
+            string mesaj17 = database.kayitEkleEleman2(tarih, eleman2EU, eleman2Dolar, eleman2TL, 7);
+
+
+            //GELİRLERİN KAYDEDİLMESİ
+            string mesaj1 = database.kayitEkleGSatis(tarih, gunluksatisEU, gunluksatisDolar, gunluksatisTL,1);
+            string mesaj2 = database.kayitEkleVSatis(tarih, veresiyeSatisEU, veresiyeSatisDolar, veresiyeSatisTL,2);
+            string mesaj3 = database.kayitEkleVTahsilat(tarih, veresiyeTahsilatEU, veresiyeTahsilatDolar, veresiyeTahsilatTL,3);
+            string mesaj4 = database.kayitEkleKKSatis(tarih, k_kartiSatisEU, k_kartiSatisDolar, k_kartiSatisTL,4);
+            string mesaj5 = database.kayitEkleKapora(tarih, kaporaEU, kaporaDolar, kaporaTL,5);
+
+            MessageBox.Show("Kayıt Başarılı", "Bilgilendirme");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Hata oluştu. Aynı tarihte kayıt olmadığından emin olun.", "Bilgilendirme");
+         
+            }
+
+
+
+
+           
 
 
         }
@@ -244,7 +276,13 @@ namespace KasaKontrol
 
                 string sorgu = "Delete  FROM `günlük_kasa` WHERE tarih = '" + del_tarih + "'";
 
+                string sorgugelir = "Delete  FROM `para_degerleri` WHERE tarih = '" + del_tarih + "'";
+
+                string sorgugider = "Delete  FROM `para_degerleri_giderler` WHERE tarih = '" + del_tarih + "'";
+
                 database.deleteData(sorgu);
+                database.deleteData(sorgugelir);
+                database.deleteData(sorgugider);
 
                 btn_listele_Click(sender, e);
             }
@@ -259,14 +297,19 @@ namespace KasaKontrol
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            datetpislemtarihi.MaxDate = new System.DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day , 0, 0, 0, 0);
-            datetpislemtarihi.MinDate = new System.DateTime(DateTime.Now.Year, DateTime.Now.Month,1, 0, 0, 0, 0);
+            //datetpislemtarihi.MaxDate = new System.DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Month , 0, 0, 0, 0);
+          //  datetpislemtarihi.MinDate = new System.DateTime(DateTime.Now.Year, DateTime.Now.Month,1, 0, 0, 0, 0);
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label50 = new System.Windows.Forms.Label();
             this.tbkaporaD = new System.Windows.Forms.TextBox();
@@ -147,6 +147,7 @@
             this.lblEuro = new System.Windows.Forms.Label();
             this.lblTL = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlGiderler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridgKasa)).BeginInit();
@@ -489,6 +490,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label9.Location = new System.Drawing.Point(142, 157);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 13);
@@ -498,6 +500,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label8.Location = new System.Drawing.Point(42, 157);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(64, 13);
@@ -507,6 +510,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label7.Location = new System.Drawing.Point(142, 23);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 13);
@@ -516,6 +520,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label6.Location = new System.Drawing.Point(257, 23);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 13);
@@ -525,6 +530,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label2.Location = new System.Drawing.Point(42, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
@@ -1058,14 +1064,14 @@
             this.EURO,
             this.DOLAR,
             this.TL});
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridgKasa.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridgKasa.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridgKasa.Location = new System.Drawing.Point(0, 413);
             this.dataGridgKasa.Name = "dataGridgKasa";
             this.dataGridgKasa.Size = new System.Drawing.Size(1247, 115);
@@ -1152,7 +1158,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(262, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "RESUL MAKİNE";
+            this.button1.Text = "GRAM TEKNİK";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // panel3
@@ -1195,6 +1201,7 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel5.Controls.Add(this.label54);
             this.panel5.Controls.Add(this.lbltoplamGoster);
             this.panel5.Controls.Add(this.btn_temizle);
             this.panel5.Controls.Add(this.btn_ekle);
@@ -1299,6 +1306,7 @@
             this.button3.TabIndex = 10;
             this.button3.Text = "Proramı Kapat";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btn_ayrintilikasa
             // 
@@ -1366,6 +1374,16 @@
             this.label53.Size = new System.Drawing.Size(86, 17);
             this.label53.TabIndex = 50;
             this.label53.Text = "TOPLAM : ";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(144, 59);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(379, 13);
+            this.label54.TabIndex = 6;
+            this.label54.Text = "(Bu tablo sadece bulunduğumuz ayı gösterir daha fazlası için ayrıntılara bakınız." +
+    ")";
             // 
             // Form1
             // 
@@ -1520,6 +1538,7 @@
         private System.Windows.Forms.Label lblEuro;
         private System.Windows.Forms.Label lblTL;
         private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label54;
     }
 }
 

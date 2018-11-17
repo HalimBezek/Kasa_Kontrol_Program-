@@ -43,6 +43,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.datagridYillikKasa = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgridaylikkasa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgridaylikayrintlikasa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datagridYillikKasa)).BeginInit();
@@ -53,6 +54,7 @@
             this.dtgridaylikkasa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgridaylikkasa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgridaylikkasa.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dtgridaylikkasa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -63,19 +65,19 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgridaylikkasa.DefaultCellStyle = dataGridViewCellStyle1;
             this.dtgridaylikkasa.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dtgridaylikkasa.Location = new System.Drawing.Point(12, 138);
+            this.dtgridaylikkasa.Location = new System.Drawing.Point(12, 117);
             this.dtgridaylikkasa.Name = "dtgridaylikkasa";
-            this.dtgridaylikkasa.Size = new System.Drawing.Size(840, 144);
+            this.dtgridaylikkasa.Size = new System.Drawing.Size(1203, 155);
             this.dtgridaylikkasa.TabIndex = 0;
             this.dtgridaylikkasa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgridaylikkasa_CellClick);
             this.dtgridaylikkasa.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgridaylikkasa_CellClick);
             // 
             // dtgridaylikayrintlikasa
             // 
-            this.dtgridaylikayrintlikasa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dtgridaylikayrintlikasa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgridaylikayrintlikasa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgridaylikayrintlikasa.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dtgridaylikayrintlikasa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgridaylikayrintlikasa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TARİH,
@@ -92,9 +94,9 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgridaylikayrintlikasa.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgridaylikayrintlikasa.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dtgridaylikayrintlikasa.Location = new System.Drawing.Point(12, 315);
+            this.dtgridaylikayrintlikasa.Location = new System.Drawing.Point(12, 312);
             this.dtgridaylikayrintlikasa.Name = "dtgridaylikayrintlikasa";
-            this.dtgridaylikayrintlikasa.Size = new System.Drawing.Size(840, 174);
+            this.dtgridaylikayrintlikasa.Size = new System.Drawing.Size(1203, 294);
             this.dtgridaylikayrintlikasa.TabIndex = 1;
             // 
             // TARİH
@@ -125,7 +127,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 122);
+            this.label1.Location = new System.Drawing.Point(9, 101);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 13);
             this.label1.TabIndex = 2;
@@ -135,7 +137,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 299);
+            this.label2.Location = new System.Drawing.Point(12, 287);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 3;
@@ -145,7 +147,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(764, 495);
+            this.button1.Location = new System.Drawing.Point(1127, 634);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 40);
             this.button1.TabIndex = 4;
@@ -168,27 +170,42 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.datagridYillikKasa.DefaultCellStyle = dataGridViewCellStyle3;
             this.datagridYillikKasa.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.datagridYillikKasa.Location = new System.Drawing.Point(12, 34);
+            this.datagridYillikKasa.Location = new System.Drawing.Point(12, 25);
             this.datagridYillikKasa.Name = "datagridYillikKasa";
-            this.datagridYillikKasa.Size = new System.Drawing.Size(840, 63);
+            this.datagridYillikKasa.Size = new System.Drawing.Size(1203, 63);
             this.datagridYillikKasa.TabIndex = 5;
             this.datagridYillikKasa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridYillikKasa_CellClick);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 18);
+            this.label3.Location = new System.Drawing.Point(9, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "YILLIK KASALAR :";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button2.ForeColor = System.Drawing.SystemColors.Control;
+            this.button2.Location = new System.Drawing.Point(12, 641);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(206, 33);
+            this.button2.TabIndex = 82;
+            this.button2.Text = "Ayrıntılı Rapor Göster";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Ayrintilar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(868, 538);
+            this.ClientSize = new System.Drawing.Size(1231, 677);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.datagridYillikKasa);
             this.Controls.Add(this.button1);
@@ -198,6 +215,7 @@
             this.Controls.Add(this.dtgridaylikkasa);
             this.Name = "Ayrintilar";
             this.Text = "Ayrıntılar";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Ayrintilar_FormClosed);
             this.Load += new System.EventHandler(this.Ayrintilar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgridaylikkasa)).EndInit();
@@ -222,5 +240,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TL;
         private System.Windows.Forms.DataGridView datagridYillikKasa;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button2;
     }
 }

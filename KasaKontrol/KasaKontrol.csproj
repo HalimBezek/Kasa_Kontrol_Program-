@@ -60,13 +60,30 @@
       <DependentUpon>Ana Sayfa.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseClass.cs" />
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParaDegerleriGelir.cs" />
+    <Compile Include="ParaDegerleriGider.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sorgula2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sorgula2.Designer.cs">
+      <DependentUpon>Sorgula2.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Ayrintilar.resx">
       <DependentUpon>Ayrintilar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ana Sayfa.resx">
       <DependentUpon>Ana Sayfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -77,6 +94,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Sorgula2.resx">
+      <DependentUpon>Sorgula2.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram3.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

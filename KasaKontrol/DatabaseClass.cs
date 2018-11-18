@@ -24,7 +24,7 @@ namespace KasaKontrol
 
             build.Server = "127.0.0.1";//	localhost
             build.UserID = "root";
-            build.Password = "root";
+            build.Password = "";
             build.Database = "kasatakip";
             build.Port = 3306;
             build.SslMode = MySqlSslMode.None;
@@ -192,7 +192,7 @@ namespace KasaKontrol
             ConnectSql();
             baglanti.Open();
 
-            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "',"+dukkangiderleriEU+dukkangiderleriDolar+dukkangiderleriTL+v + "')";
+            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','"+dukkangiderleriEU+ "','" + dukkangiderleriDolar+ "','" + dukkangiderleriTL + "'," + v + ")";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -216,7 +216,7 @@ namespace KasaKontrol
             ConnectSql();
             baglanti.Open();
 
-            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "'," + iadealinanEU + iadealinanDolar + iadealinanTL + v + "')";
+            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + iadealinanEU + "','" + iadealinanDolar + "','" + iadealinanTL + "'," + v + ")";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -240,7 +240,7 @@ namespace KasaKontrol
             ConnectSql();
             baglanti.Open();
 
-            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "'," + firmaödemeleriEU + firmaödemeleriDolar + firmaödemeleriTL + v + "')";
+            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + firmaödemeleriEU + "','" + firmaödemeleriDolar + "','" + firmaödemeleriTL + "'," + v + ")";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -263,7 +263,7 @@ namespace KasaKontrol
             ConnectSql();
             baglanti.Open();
 
-            string sql = "INSERT INTO para_degerleri (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "'," + veresiyeSatisEU + veresiyeSatisDolar + veresiyeSatisTL + v + "')";
+            string sql = "INSERT INTO para_degerleri (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + veresiyeSatisEU + "','" + veresiyeSatisDolar + "','" + veresiyeSatisTL + "'," + v + ")";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -286,7 +286,7 @@ namespace KasaKontrol
             ConnectSql();
             baglanti.Open();
 
-            string sql = "INSERT INTO para_degerleri (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "'," + k_kartiSatisEU + k_kartiSatisDolar + k_kartiSatisTL + v + "')";
+            string sql = "INSERT INTO para_degerleri (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + k_kartiSatisEU + "','" + k_kartiSatisDolar + "','" + k_kartiSatisTL + "'," + v + ")";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -347,7 +347,7 @@ namespace KasaKontrol
             ConnectSql();
             baglanti.Open();
 
-            string sql = "INSERT INTO para_degerleri (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "'," + kaporaEU + kaporaDolar + kaporaTL + v + "')";
+            string sql = "INSERT INTO para_degerleri (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + kaporaEU + "','" + kaporaDolar + "','" + kaporaTL + "'," + v + ")";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -370,7 +370,7 @@ namespace KasaKontrol
             ConnectSql();
             baglanti.Open();
 
-            string sql = "INSERT INTO para_degerleri (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "'," + veresiyeTahsilatEU + veresiyeTahsilatDolar + veresiyeTahsilatTL + v + "')";
+            string sql = "INSERT INTO para_degerleri (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + veresiyeTahsilatEU + "','" + veresiyeTahsilatDolar + "','" + veresiyeTahsilatTL + "'," + v + ")";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -393,7 +393,7 @@ namespace KasaKontrol
             ConnectSql();
             baglanti.Open();
 
-            string sql = "INSERT INTO para_degerleri (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "'," + gunluksatisEU + gunluksatisDolar + gunluksatisTL + v + "')";
+            string sql = "INSERT INTO para_degerleri (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + gunluksatisEU + "','" + gunluksatisDolar + "','" + gunluksatisTL + "'," + v + ")";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -416,7 +416,7 @@ namespace KasaKontrol
             ConnectSql();
             baglanti.Open();
 
-            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "'," + pesinalinanödemeEU + pesinalinanödemeDolar + pesinalinanödemeTL + v + "')";
+            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + pesinalinanödemeEU + "','" + pesinalinanödemeDolar + "','" + pesinalinanödemeTL + "'," + v + ")";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -439,7 +439,7 @@ namespace KasaKontrol
             ConnectSql();
             baglanti.Open();
 
-            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "'," + eleman1EU + eleman1Dolar + eleman1TL + v + "')";
+            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + eleman1EU + "','" + eleman1Dolar + "','" + eleman1TL + "'," + v + ")";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -462,7 +462,7 @@ namespace KasaKontrol
             ConnectSql();
             baglanti.Open();
 
-            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "'," + eleman2EU + eleman2Dolar + eleman2TL + v + "')";
+            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + eleman2EU + "','" + eleman2Dolar + "','" + eleman2TL + "'," + v + ")";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -485,7 +485,7 @@ namespace KasaKontrol
             ConnectSql();
             baglanti.Open();
 
-            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "'," + resuldödemeEU + resuldödemeDolar + resuldödemeTL + v + "')";
+            string sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + resuldödemeEU + "','" + resuldödemeDolar + "','" + resuldödemeTL + "'," + v + ")";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);

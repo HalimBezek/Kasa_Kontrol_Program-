@@ -97,7 +97,7 @@ namespace KasaKontrol
         {
             dateTimePicker1.Value = DateTime.Now.AddMonths(-1);
             dateTimePicker2.Value = DateTime.Now;
-            bool tarihBazli = false;
+            bool tarihBazli = true;
             SayfayıDoldur(tarihBazli);
         }
 
@@ -109,8 +109,12 @@ namespace KasaKontrol
             datagrid2Doldur(database, tarihBazli);
             veresiyeDurumu();
             toplamGoster();
-            
-            int num = 0;
+            veresiyeDoldur();
+           
+        
+
+
+        int num = 0;
             while (true)
             {
                 if (num >= (this.dataGridView1.Rows.Count - 1))
@@ -137,6 +141,24 @@ namespace KasaKontrol
 
         }
 
+        private void veresiyeDoldur()
+        {
+            double veresiyeToplamE = 0;
+            double veresiyeToplamD = 0;
+            double veresiyeToplamTl = 0;
+
+            for (int i = 0; i < dataGridView3.Rows.Count; i++)
+            {
+                veresiyeToplamE += Convert.ToDouble(dataGridView3.Rows[i].Cells[1].Value);
+                veresiyeToplamD += Convert.ToDouble(dataGridView3.Rows[i].Cells[2].Value);
+                veresiyeToplamTl += Convert.ToDouble(dataGridView3.Rows[i].Cells[3].Value);
+            }
+
+            lblToplamE.Text = "€ : " + veresiyeToplamE.ToString();
+            lblToplamD.Text = "$ : " + veresiyeToplamD.ToString();
+            lblToplamTL.Text = "TL : " + veresiyeToplamTl.ToString();
+        }
+
         private void veresiyeDurumu()
         {
             double num = 0.0;
@@ -146,7 +168,7 @@ namespace KasaKontrol
             dataGridView3.Rows.Clear();
             while (true)
             {
-                if (num4 >= (this.dataGridView1.Rows.Count - 2))
+                if (num4 >= (this.dataGridView1.Rows.Count - 1))
                 {
                     this.dataGridView3.Columns[0].HeaderText = "TARİH";
                     this.dataGridView3.Columns[1].HeaderText = "EURO";
@@ -181,20 +203,7 @@ namespace KasaKontrol
 
         private void toplamGoster()
         {
-            double veresiyeToplamE = 0;
-            double veresiyeToplamD = 0;
-            double veresiyeToplamTl = 0;
-
-            for (int i = 0; i < dataGridView3.Rows.Count; i++)
-            {
-                veresiyeToplamE += Convert.ToDouble(dataGridView3.Rows[i].Cells[1].Value);
-                veresiyeToplamD += Convert.ToDouble(dataGridView3.Rows[i].Cells[2].Value);
-                veresiyeToplamTl += Convert.ToDouble(dataGridView3.Rows[i].Cells[3].Value);
-            }
-
-            lblToplamE.Text = "€ : " + veresiyeToplamE.ToString();
-            lblToplamD.Text = "$ : " + veresiyeToplamD.ToString();
-            lblToplamTL.Text = "TL : " + veresiyeToplamTl.ToString();
+            
 
             double num = 0.0;
             double num2 = 0.0;
@@ -346,7 +355,7 @@ namespace KasaKontrol
         private void datagrid2Doldur(DatabaseClass database, bool tarihBazli)
         {
             string sorgu = "";
-            string yil, ay, gun, tarih, tarih_2;
+            string yil, ay, gun, tarih, tarih_2, yil2, ay2, gun2;
             dataGridView2.Rows.Clear();
 
             DateTime DTIME = dateTimePicker1.Value;
@@ -361,16 +370,16 @@ namespace KasaKontrol
 
             tarih = yil + "-" + ay + "-" + gun;
             DateTime DTIME2 = dateTimePicker2.Value;
-            yil = DTIME2.Date.Year.ToString();
-            ay = DTIME2.Date.Month.ToString();
-            gun = DTIME2.Date.Day.ToString();
+            yil2 = DTIME2.Date.Year.ToString();
+            ay2 = DTIME2.Date.Month.ToString();
+            gun2 = DTIME2.Date.Day.ToString();
 
-            if (ay.Length <= 1)
+            if (ay2.Length <= 1)
             {
-                ay = "0" + ay;
+                ay2 = "0" + ay2;
             }
 
-            tarih_2 = yil + "-" + ay + "-" + gun;
+            tarih_2 = yil2 + "-" + ay2 + "-" + gun2;
 
             String tarih1 = tarih;
             String tarih2 = tarih_2;           
@@ -703,7 +712,7 @@ namespace KasaKontrol
         {
             try
             {
-                if ((e.Value != null) && (Convert.ToDouble(e.Value.ToString()) < 0.0))
+                if ((e.Value != null) && (Convert.ToDouble(e.Value.ToString()) < 0))
                 {
                     e.CellStyle.BackColor = Color.Red;
                     //e.CellStyle.SelectionBackColor = Color.Yellow;

@@ -124,26 +124,34 @@ namespace KasaKontrol
             {
 
              //TOPLAM VE ORTALAMA DEĞERLERİN KAYDEDİLDİĞİ METOT
-            database.kayitEkle(tarih, dbAy, gunlukKasaEU, gunlukKasaD, gunlukKasaTL,yil);
+            String kayit = database.kayitEkle(tarih, dbAy, gunlukKasaEU, gunlukKasaD, gunlukKasaTL,yil);
 
-            //GİDERLERİN KAYDEDİLMESİ
-            string mesaj11 = database.kayitEkleDGiderleri(tarih, dukkangiderleriEU, dukkangiderleriDolar, dukkangiderleriTL, 1);
-            string mesaj12 = database.kayitEkleIAlinan(tarih, iadealinanEU, iadealinanDolar, iadealinanTL, 2);
-            string mesaj13 = database.kayitEkleFOdemeleri(tarih, firmaödemeleriEU, firmaödemeleriDolar, firmaödemeleriTL, 3);
-            string mesaj14 = database.kayitEklePAlinanO(tarih, pesinalinanödemeEU, pesinalinanödemeDolar, pesinalinanödemeTL, 4);
-            string mesaj15 = database.kayitEkleR_D_Odemeler(tarih, resuldödemeEU, resuldödemeDolar, resuldödemeTL, 5);
-            string mesaj16 = database.kayitEkleEleman1(tarih, eleman1EU, eleman1Dolar, eleman1TL, 6);
-            string mesaj17 = database.kayitEkleEleman2(tarih, eleman2EU, eleman2Dolar, eleman2TL, 7);
+            if (kayit.Equals("Kayıt başarılı"))
+            {
+                //GİDERLERİN KAYDEDİLMESİ
+                string mesaj11 = database.kayitEkleDGiderleri(tarih, dukkangiderleriEU, dukkangiderleriDolar, dukkangiderleriTL, 1);
+                string mesaj12 = database.kayitEkleIAlinan(tarih, iadealinanEU, iadealinanDolar, iadealinanTL, 2);
+                string mesaj13 = database.kayitEkleFOdemeleri(tarih, firmaödemeleriEU, firmaödemeleriDolar, firmaödemeleriTL, 3);
+                string mesaj14 = database.kayitEklePAlinanO(tarih, pesinalinanödemeEU, pesinalinanödemeDolar, pesinalinanödemeTL, 4);
+                string mesaj15 = database.kayitEkleR_D_Odemeler(tarih, resuldödemeEU, resuldödemeDolar, resuldödemeTL, 5);
+                string mesaj16 = database.kayitEkleEleman1(tarih, eleman1EU, eleman1Dolar, eleman1TL, 6);
+                string mesaj17 = database.kayitEkleEleman2(tarih, eleman2EU, eleman2Dolar, eleman2TL, 7);
 
 
-            //GELİRLERİN KAYDEDİLMESİ
-            string mesaj1 = database.kayitEkleGSatis(tarih, gunluksatisEU, gunluksatisDolar, gunluksatisTL,1);
-            string mesaj2 = database.kayitEkleVSatis(tarih, veresiyeSatisEU, veresiyeSatisDolar, veresiyeSatisTL,2);
-            string mesaj3 = database.kayitEkleVTahsilat(tarih, veresiyeTahsilatEU, veresiyeTahsilatDolar, veresiyeTahsilatTL,3);
-            string mesaj4 = database.kayitEkleKKSatis(tarih, k_kartiSatisEU, k_kartiSatisDolar, k_kartiSatisTL,4);
-            string mesaj5 = database.kayitEkleKapora(tarih, kaporaEU, kaporaDolar, kaporaTL,5);
+                //GELİRLERİN KAYDEDİLMESİ
+                string mesaj1 = database.kayitEkleGSatis(tarih, gunluksatisEU, gunluksatisDolar, gunluksatisTL, 1);
+                string mesaj2 = database.kayitEkleVSatis(tarih, veresiyeSatisEU, veresiyeSatisDolar, veresiyeSatisTL, 2);
+                string mesaj3 = database.kayitEkleVTahsilat(tarih, veresiyeTahsilatEU, veresiyeTahsilatDolar, veresiyeTahsilatTL, 3);
+                string mesaj4 = database.kayitEkleKKSatis(tarih, k_kartiSatisEU, k_kartiSatisDolar, k_kartiSatisTL, 4);
+                string mesaj5 = database.kayitEkleKapora(tarih, kaporaEU, kaporaDolar, kaporaTL, 5);
 
-            MessageBox.Show("Kayıt Başarılı", "Bilgilendirme");
+                MessageBox.Show("Kayıt Başarılı", "Bilgilendirme");
+            }
+            else
+            {
+                MessageBox.Show("Hata oluştu. Aynı tarihte kayıt olmadığından emin olun.", "Bilgilendirme");
+            }
+           
             }
             catch (Exception)
             {
@@ -202,10 +210,24 @@ namespace KasaKontrol
             // dataGridgKasa.Columns[0].Visible = false;
             if (dataGridgKasa.RowCount > 1)
             {
-                List<string> topalmdegerler = database.ListDatatab(secili_ay);
+                double veresiyeToplamE = 0;
+                double veresiyeToplamD = 0;
+                double veresiyeToplamTl = 0;
+
+                for (int i = 0; i < dataGridgKasa.Rows.Count; i++)
+                {
+                    veresiyeToplamE += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[2].Value);
+                    veresiyeToplamD += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[3].Value);
+                    veresiyeToplamTl += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[4].Value);
+                }
+
+                lblEuro.Text = "€ : " + veresiyeToplamE.ToString();
+                lblDolar.Text = "$ : " + veresiyeToplamD.ToString();
+                lblTL.Text = "TL : " + veresiyeToplamTl.ToString();
+                /*List<string> topalmdegerler = database.ListDatatab(secili_ay);
                 lblEuro.Text = " € : " + topalmdegerler[0];
                 lblDolar.Text = " $ : " + topalmdegerler[1];
-                lblTL.Text = " TL : " + topalmdegerler[2];
+                lblTL.Text = " TL : " + topalmdegerler[2];*/
             }
             else
             {
@@ -260,33 +282,43 @@ namespace KasaKontrol
 
         private void Sil_Click(object sender, EventArgs e)
         {
-            if (dataGridgKasa.Rows[0].Cells[0].Value != null) 
+            DialogResult secenek = MessageBox.Show("Kaydı silmek istiyor musunuz?", "Bilgilendirme Penceresi", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (secenek == DialogResult.Yes)
             {
-                string yil, ay, gun;
-                string secili_gun = dataGridgKasa.CurrentRow.Cells[0].Value.ToString();
-                string[] kesim1 = secili_gun.Split(' ');
-                string[] kesim2 = kesim1[0].Split('.');
+                if (dataGridgKasa.Rows[0].Cells[0].Value != null)
+                {
+                    string yil, ay, gun;
+                    string secili_gun = dataGridgKasa.CurrentRow.Cells[0].Value.ToString();
+                    string[] kesim1 = secili_gun.Split(' ');
+                    string[] kesim2 = kesim1[0].Split('.');
 
-                yil = kesim2[2];
-                ay = kesim2[1];
-                gun = kesim2[0];
-                string del_tarih = yil + "-" + ay + "-" + gun;
+                    yil = kesim2[2];
+                    ay = kesim2[1];
+                    gun = kesim2[0];
+                    string del_tarih = yil + "-" + ay + "-" + gun;
 
-                DatabaseClass database = new DatabaseClass();
+                    DatabaseClass database = new DatabaseClass();
 
-                string sorgu = "Delete  FROM `günlük_kasa` WHERE tarih = '" + del_tarih + "'";
+                    string sorgu = "Delete  FROM `günlük_kasa` WHERE tarih = '" + del_tarih + "'";
 
-                string sorgugelir = "Delete  FROM `para_degerleri` WHERE tarih = '" + del_tarih + "'";
+                    string sorgugelir = "Delete  FROM `para_degerleri` WHERE tarih = '" + del_tarih + "'";
 
-                string sorgugider = "Delete  FROM `para_degerleri_giderler` WHERE tarih = '" + del_tarih + "'";
+                    string sorgugider = "Delete  FROM `para_degerleri_giderler` WHERE tarih = '" + del_tarih + "'";
 
-                database.deleteData(sorgu);
-                database.deleteData(sorgugelir);
-                database.deleteData(sorgugider);
+                    database.deleteData(sorgu);
+                    database.deleteData(sorgugelir);
+                    database.deleteData(sorgugider);
 
-                btn_listele_Click(sender, e);
+                    btn_listele_Click(sender, e);
+                }
+                else { MessageBox.Show("Stunlar boş olduğundan işlem yapılamaz", "Uyarı"); }
             }
-            else { MessageBox.Show("Stunlar boş olduğundan işlem yapılamaz", "Uyarı"); }
+            else if (secenek == DialogResult.No)
+            {
+                //Hayır seçeneğine tıklandığında çalıştırılacak kodlar
+            }
+            
            
         }
 

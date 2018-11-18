@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label50 = new System.Windows.Forms.Label();
             this.tbkaporaD = new System.Windows.Forms.TextBox();
@@ -133,6 +133,7 @@
             this.datetpislemtarihi = new System.Windows.Forms.DateTimePicker();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label54 = new System.Windows.Forms.Label();
             this.lbltoplamGoster = new System.Windows.Forms.Label();
             this.btn_temizle = new System.Windows.Forms.Button();
             this.btn_ekle = new System.Windows.Forms.Button();
@@ -147,7 +148,6 @@
             this.lblEuro = new System.Windows.Forms.Label();
             this.lblTL = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlGiderler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridgKasa)).BeginInit();
@@ -1064,14 +1064,14 @@
             this.EURO,
             this.DOLAR,
             this.TL});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridgKasa.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridgKasa.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridgKasa.Location = new System.Drawing.Point(0, 413);
             this.dataGridgKasa.Name = "dataGridgKasa";
             this.dataGridgKasa.Size = new System.Drawing.Size(1247, 115);
@@ -1213,6 +1213,16 @@
             this.panel5.Size = new System.Drawing.Size(1247, 75);
             this.panel5.TabIndex = 4;
             // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(144, 59);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(379, 13);
+            this.label54.TabIndex = 6;
+            this.label54.Text = "(Bu tablo sadece bulunduğumuz ayı gösterir daha fazlası için ayrıntılara bakınız." +
+    ")";
+            // 
             // lbltoplamGoster
             // 
             this.lbltoplamGoster.AutoSize = true;
@@ -1324,7 +1334,7 @@
             // 
             this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panel7.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel7.Controls.Add(this.lblDolar);
             this.panel7.Controls.Add(this.lblEuro);
             this.panel7.Controls.Add(this.lblTL);
@@ -1374,16 +1384,6 @@
             this.label53.Size = new System.Drawing.Size(86, 17);
             this.label53.TabIndex = 50;
             this.label53.Text = "TOPLAM : ";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(144, 59);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(379, 13);
-            this.label54.TabIndex = 6;
-            this.label54.Text = "(Bu tablo sadece bulunduğumuz ayı gösterir daha fazlası için ayrıntılara bakınız." +
-    ")";
             // 
             // Form1
             // 

@@ -24,9 +24,9 @@ namespace KasaKontrol
 
         private void Ayrintilar_Load(object sender, EventArgs e)
         {
-            DatabaseClass database = new DatabaseClass();
+            DatabaseClass database = new DatabaseClass(); 
 
-            string sql = "select HANGI_YIL, SUM(Euro) as EuroT, SUM(Dolar) as DolarT, SUM(TL) as TLT FROM `günlük_kasa` GROUP BY HANGI_YIL";
+            string sql = "select HANGI_YIL, SUM(REPLACE(Euro, ',', '.')) as EuroT, SUM(REPLACE(Dolar, ',', '.')) as DolarT, SUM(REPLACE(TL, ',', '.')) as TLT FROM `günlük_kasa` GROUP BY HANGI_YIL";
 
             datagridYillikKasa.DataSource = database.ListData(sql);
 
@@ -37,7 +37,7 @@ namespace KasaKontrol
 
 
 
-            string sqlay = "select aylar, SUM(Euro) as EuroT, SUM(Dolar) as DolarT, SUM(TL) as TLT FROM `günlük_kasa` GROUP BY aylar";
+            string sqlay = "select aylar, SUM(REPLACE(Euro, ',', '.')) as EuroT, SUM(REPLACE(Dolar, ',', '.')) as DolarT, SUM(REPLACE(TL, ',', '.')) as TLT FROM `günlük_kasa` GROUP BY aylar";
 
             dtgridaylikkasa.DataSource = database.ListData(sqlay);
 

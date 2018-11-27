@@ -476,12 +476,12 @@ namespace KasaKontrol
             this.dataGridView2.Columns[13].HeaderText = "EURO";
             this.dataGridView2.Columns[14].HeaderText = "DOLAR";
             this.dataGridView2.Columns[15].HeaderText = "TL";
-            this.dataGridView2.Columns[0x10].HeaderText = "EURO";
-            this.dataGridView2.Columns[0x11].HeaderText = "DOLAR";
-            this.dataGridView2.Columns[0x12].HeaderText = "TL";
-            this.dataGridView2.Columns[0x13].HeaderText = "EURO";
+            this.dataGridView2.Columns[16].HeaderText = "EURO";
+            this.dataGridView2.Columns[17].HeaderText = "DOLAR";
+            this.dataGridView2.Columns[18].HeaderText = "TL";
+            this.dataGridView2.Columns[19].HeaderText = "EURO";
             this.dataGridView2.Columns[20].HeaderText = "DOLAR";
-            this.dataGridView2.Columns[0x15].HeaderText = "TL";
+            this.dataGridView2.Columns[21].HeaderText = "TL";
             int num3 = 0;
             this.dataGridView2.ColumnHeadersHeight = 24;
             while (true)
@@ -734,6 +734,11 @@ namespace KasaKontrol
         {
             bool tarihBazli = true;
             SayfayıDoldur(tarihBazli);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

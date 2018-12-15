@@ -26,7 +26,7 @@ namespace KasaKontrol
         {
             DatabaseClass database = new DatabaseClass(); 
 
-            string sql = "select HANGI_YIL, SUM(REPLACE(Euro, ',', '.')) as EuroT, SUM(REPLACE(Dolar, ',', '.')) as DolarT, SUM(REPLACE(TL, ',', '.')) as TLT FROM `günlük_kasa` GROUP BY HANGI_YIL";
+           string sql = "select HANGI_YIL, SUM(CAST(REPLACE(Euro, ',', '.') as DECIMAL(9, 2))) as EuroT, SUM(CAST(REPLACE(Dolar, ',', '.') as DECIMAL(9, 2))) as DolarT, SUM(CAST(REPLACE(TL, ',', '.') as DECIMAL(9, 2))) as TLT FROM `günlük_kasa` GROUP BY HANGI_YIL";
 
             datagridYillikKasa.DataSource = database.ListData(sql);
 
@@ -37,7 +37,7 @@ namespace KasaKontrol
 
 
 
-            string sqlay = "select aylar, SUM(REPLACE(Euro, ',', '.')) as EuroT, SUM(REPLACE(Dolar, ',', '.')) as DolarT, SUM(REPLACE(TL, ',', '.')) as TLT FROM `günlük_kasa` GROUP BY aylar";
+            string sqlay = "select aylar, SUM(CAST(REPLACE(Euro, ',', '.') as DECIMAL(9, 2))) as EuroT, SUM(CAST(REPLACE(Dolar, ',', '.') as DECIMAL(9, 2))) as DolarT, SUM(CAST(REPLACE(TL, ',', '.') as DECIMAL(9, 2))) as TLT FROM `günlük_kasa` GROUP BY aylar";
 
             dtgridaylikkasa.DataSource = database.ListData(sqlay);
 

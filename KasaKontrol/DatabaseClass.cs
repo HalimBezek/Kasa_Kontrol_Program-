@@ -69,7 +69,7 @@ namespace KasaKontrol
             string sql = "";
             if (!isUpdateDate.Equals(""))
             {
-                 sql = "UPDATE `günlük_kasa` SET `Euro`="+ gunlukKasaEU + ",`Dolar`="+ gunlukKasaD + ",`TL`="+ gunlukKasaTL + " WHERE tarih = '" + isUpdateDate + "'";
+                 sql = "UPDATE `günlük_kasa` SET `Euro`= '"+ gunlukKasaEU.ToString() + "' ,`Dolar`= '"+ gunlukKasaD.ToString() + "' ,`TL`= '"+ gunlukKasaTL.ToString() + "' WHERE tarih = '" + isUpdateDate + "'";
             }
             else
             {
@@ -120,18 +120,18 @@ namespace KasaKontrol
                 ConnectSql();
                 baglanti.Open();
 
-                string sqlToplamEur = "Select SUM(Euro) as EuroT" +
+                string sqlToplamEur = "Select SUM(CAST(REPLACE(Euro, ',', '.') as DECIMAL(9, 2))) as EuroT" +
                             " FROM `günlük_kasa` WHERE aylar LIKE '" + secili_ay + "' GROUP BY aylar";
                 MySqlCommand komut = new MySqlCommand(sqlToplamEur, baglanti);
                 string valueEU = komut.ExecuteScalar().ToString();
 
 
-                string sqlToplamdolar = "Select SUM(Dolar) as DolarT " +
+                string sqlToplamdolar = "Select SUM(CAST(REPLACE(Dolar, ',', '.') as DECIMAL(9, 2))) as DolarT " +
                             " FROM `günlük_kasa` WHERE aylar LIKE '" + secili_ay + "' GROUP BY aylar";
                 MySqlCommand komut2 = new MySqlCommand(sqlToplamdolar, baglanti);
                 string valueDL = komut2.ExecuteScalar().ToString();
 
-                string sqlToplamTL = "Select SUM(TL) as TLT FROM `günlük_kasa` WHERE aylar LIKE '" + secili_ay + "' GROUP BY aylar";
+                string sqlToplamTL = "Select SUM(CAST(REPLACE(TL, ',', '.') as DECIMAL(9, 2))) as TLT FROM `günlük_kasa` WHERE aylar LIKE '" + secili_ay + "' GROUP BY aylar";
                 MySqlCommand komut3 = new MySqlCommand(sqlToplamTL, baglanti);
                 string valueTL = komut3.ExecuteScalar().ToString();
 

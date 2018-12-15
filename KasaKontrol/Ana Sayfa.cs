@@ -26,6 +26,7 @@ namespace KasaKontrol
             if (secenek == DialogResult.Yes)
             {
                 ekleveGüncelle("");
+                btn_listele_Click(sender, e);
             }
             else { }
         }
@@ -119,8 +120,8 @@ namespace KasaKontrol
             double gunlukKasaTL = toplamGelirTL - toplamGiderTL;
 
 
-            lbltoplamGoster.Text = "***********Günlük Kasa : €:" + gunlukKasaEU + "  $:" + gunlukKasaD +
-                "  TL:" + gunlukKasaTL + "  ************";
+            //lbltoplamGoster.Text = "***********Günlük Kasa : €:" + gunlukKasaEU + "  $:" + gunlukKasaD +
+            //    "  TL:" + gunlukKasaTL + "  ************";
 
             
             
@@ -135,6 +136,10 @@ namespace KasaKontrol
             if (ay.Length <= 1)
             {
                 ay = "0" + ay;
+            }
+            if (gun.Length <= 1)
+            {
+                gun = "0" + gun;
             }
 
             tarih = yil + "-" + ay + "-" + gun;
@@ -182,23 +187,25 @@ namespace KasaKontrol
                 MessageBox.Show("Hata oluştu. Aynı tarihte kayıt olmadığından emin olun.", "Bilgilendirme");
          
             }
-
-
-
-
-           
-
-
+            
         }
 
         private void btn_listele_Click(object sender, EventArgs e)
         {
+            listele();
+        }
+
+        private void listele()
+        {
+
+
             string yil, ay, gun, tarih, tarih_2;
+
             dataGridgKasa.Columns.Clear();
-            
+
             DatabaseClass database = new DatabaseClass();
             //
-                       
+
             DateTime DTIME = dateTimePicker1.Value;
             yil = DTIME.Date.Year.ToString();
             ay = DTIME.Date.Month.ToString();
@@ -207,6 +214,10 @@ namespace KasaKontrol
             if (ay.Length <= 1)
             {
                 ay = "0" + ay;
+            }
+            if (gun.Length <= 1)
+            {
+                gun = "0" + gun;
             }
 
             tarih = yil + "-" + ay + "-" + gun;
@@ -219,6 +230,11 @@ namespace KasaKontrol
             {
                 ay = "0" + ay;
             }
+            if (gun.Length <= 1)
+            {
+                gun = "0" + gun;
+            }
+
 
             tarih_2 = yil + "-" + ay + "-" + gun;
 
@@ -248,16 +264,17 @@ namespace KasaKontrol
                 secili_ay =ay + "/" + yil;
             }
             else secili_ay = "0" + ay + "/" + yil;*/
-            
-            string sql = "Select `Tarih`, `aylar`, `Euro`, `Dolar`, `TL` from günlük_kasa WHERE Tarih between '" + tarih1 + "' and '" + tarih2 + "'"; ;
-            
+
+            string sql = "Select `Tarih`, `aylar`, `TL`, `Euro`, `Dolar` from günlük_kasa WHERE Tarih between '" + tarih1 + "' and '" + tarih2 + "' ORDER BY Tarih"; ;
+
             dataGridgKasa.DataSource = database.ListData(sql);
 
             dataGridgKasa.Columns[0].HeaderText = "TARİH";
             dataGridgKasa.Columns[1].HeaderText = "AYLAR";
-            dataGridgKasa.Columns[2].HeaderText = "EURO";
-            dataGridgKasa.Columns[3].HeaderText = "DOLAR";
-            dataGridgKasa.Columns[4].HeaderText = "TL";
+            dataGridgKasa.Columns[2].HeaderText = "TL";
+            dataGridgKasa.Columns[3].HeaderText = "EURO";
+            dataGridgKasa.Columns[4].HeaderText = "DOLAR";
+
 
             // dataGridgKasa.Columns[0].Visible = false;
             if (dataGridgKasa.RowCount > 1)
@@ -266,11 +283,13 @@ namespace KasaKontrol
                 double veresiyeToplamD = 0;
                 double veresiyeToplamTl = 0;
 
+
                 for (int i = 0; i < dataGridgKasa.Rows.Count; i++)
                 {
-                    veresiyeToplamE += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[2].Value);
-                    veresiyeToplamD += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[3].Value);
-                    veresiyeToplamTl += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[4].Value);
+                    veresiyeToplamTl += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[2].Value);
+                    veresiyeToplamE += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[3].Value);
+                    veresiyeToplamD += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[4].Value);
+
                 }
 
                 lblEuro.Text = "€ : " + veresiyeToplamE.ToString();
@@ -280,6 +299,21 @@ namespace KasaKontrol
                 lblEuro.Text = " € : " + topalmdegerler[0];
                 lblDolar.Text = " $ : " + topalmdegerler[1];
                 lblTL.Text = " TL : " + topalmdegerler[2];*/
+
+                dataGridgKasa.ClearSelection();
+                // dataGridgKasa.Rows[dataGridgKasa.RowCount - 2].Selected = true;
+
+
+                int nRowIndex = dataGridgKasa.Rows.Count - 2;
+                int nColumnIndex = 2;
+
+                dataGridgKasa.Rows[nRowIndex].Selected = true;
+                dataGridgKasa.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
+                dataGridgKasa.CurrentCell = dataGridgKasa.Rows[nRowIndex].Cells[nColumnIndex];
+                //In case if you want to scroll down as well.
+                //  dataGridgKasa.FirstDisplayedScrollingRowIndex = nRowIndex;
+                kasadevirHesapla();
+                veresiyeHesapla();
             }
             else
             {
@@ -287,33 +321,22 @@ namespace KasaKontrol
                 lblDolar.Text = " $ : 0";
                 lblTL.Text = " TL : 0";
             }
-           
+
         }
 
         private void btn_temizle_Click(object sender, EventArgs e)
         {
-            tb_dukkangiderE.Text = ""; tb_dukkangiderD.Text = ""; tb_dukkangiderTL.Text = "";
-            tb_iadealinanE.Text = ""; tb_iadealinanD.Text = ""; tb_iadealinanTL.Text = "";
-            tb_firmaödE.Text = ""; tb_firmaödD.Text = ""; tb_firmaödTL.Text = "";
-            tb_pesinalinanE.Text = ""; tb_pesinalinanD.Text = ""; tb_pesinalinanTL.Text = "";
-            tb_ResulDödemeE.Text = ""; tb_ResulDödemeD.Text = ""; tb_ResulDödemeTL.Text = "";
-            tb_eleman1E.Text = ""; tb_eleman1D.Text = ""; tb_eleman1TL.Text = "";
-            tb_eleman1E.Text = ""; tb_eleman2D.Text = ""; tb_eleman2TL.Text = "";
-
-            tb_gunluksE.Text = ""; tb_gunluksD.Text = ""; tb_gunluksTL.Text = "";
-            tb_veresiyetahE.Text = ""; tb_veresiyetahD.Text = ""; tb_veresiyetahTL.Text = "";
-            tb_veresiyesE.Text = ""; tb_veresiyesD.Text = ""; tb_veresiyesTL.Text = "";
-            tb_kksatisE.Text = ""; tb_kksatisD.Text = ""; tb_kksatisTL.Text = "";
-            tbkaporaE.Text = ""; tbkaporaD.Text = ""; tbkaporaTL.Text = "";
-
-
+            degerleri_temizle();
 
         }
 
         private void btn_ayrintilikasa_Click(object sender, EventArgs e)
         {
-            Ayrintilar ayrintiekrani = new Ayrintilar();
-            ayrintiekrani.Show();
+            Sorgula2 s = new Sorgula2();
+
+            s.Show();
+            //Ayrintilar ayrintiekrani = new Ayrintilar();
+            //ayrintiekrani.Show();
         }
 
         private void tb_gunluksE_TextChanged(object sender, EventArgs e)
@@ -348,6 +371,16 @@ namespace KasaKontrol
                     yil = kesim2[2];
                     ay = kesim2[1];
                     gun = kesim2[0];
+
+                    if (ay.Length <= 1)
+                    {
+                        ay = "0" + ay;
+                    }
+                    if (gun.Length <= 1)
+                    {
+                        gun = "0" + gun;
+                    }
+
                     string del_tarih = yil + "-" + ay + "-" + gun;
 
                     DatabaseClass database = new DatabaseClass();
@@ -385,7 +418,7 @@ namespace KasaKontrol
             dateTimePicker2.Value = DateTime.Now;
             //datetpislemtarihi.MaxDate = new System.DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Month , 0, 0, 0, 0);
             //  datetpislemtarihi.MinDate = new System.DateTime(DateTime.Now.Year, DateTime.Now.Month,1, 0, 0, 0, 0);
-
+            listele();
         }
       
         private void button2_Click(object sender, EventArgs e)
@@ -403,30 +436,92 @@ namespace KasaKontrol
             }
         }
 
-        private void dataGridgKasa_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void button2_Click_1(object sender, EventArgs e)
         {
+
+           
+                if (dataGridgKasa.Rows[0].Cells[0].Value != null)
+                {
+                    string yil, ay, gun;
+                    string secili_gun = datetpislemtarihi.Text;
+                    string[] kesim1 = secili_gun.Split(' ');
+                    string[] kesim2 = kesim1[0].Split('.');
+
+                    yil = kesim2[2];
+                    ay = kesim2[1];
+                    gun = kesim2[0];
+                    string tarih = yil + "-" + ay + "-" + gun;
+                    string tarih2 = gun + "." + ay + "." +yil;
+
+                DialogResult secenek = MessageBox.Show( datetpislemtarihi.Text + " Tarihindeki kayıt güncellenecek"+"\n"+"Devam etmek istiyor musunuz?", "Bilgilendirme Penceresi", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                        if (secenek == DialogResult.Yes)
+                        {
+                            string isUpdateDate = tarih;
+
+                            ekleveGüncelle(isUpdateDate);
+                            btn_listele_Click(sender, e);
+                        }
+                        else if (secenek == DialogResult.No)
+                        {
+                            //Hayır seçeneğine tıklandığında çalıştırılacak kodlar
+                        }
+
+               }
+                else { MessageBox.Show("Stunlar boş olduğundan işlem yapılamaz", "Uyarı"); }
+            
+
+
+        }
+
+        private void dataGridgKasa_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
+            kasadevirHesapla();
+            veresiyeHesapla();
+        }
+
+        private void panel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridgKasa_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void datetpislemtarihi_ValueChanged(object sender, EventArgs e)
+        {
+
             string yil, ay, gun, tarih;
             try
             {
-                if (dataGridgKasa.ColumnCount > 0)
+                
+                DateTime DTIME = Convert.ToDateTime(datetpislemtarihi.Text);
+                yil = DTIME.Date.Year.ToString();
+                ay = DTIME.Date.Month.ToString();
+                gun = DTIME.Date.Day.ToString();
+
+                if (ay.Length <= 1)
                 {
+                    ay = "0" + ay;
+                }
+                if (gun.Length <= 1)
+                {
+                    gun = "0" + gun;
+                }
 
-                    DateTime DTIME = Convert.ToDateTime(dataGridgKasa.CurrentRow.Cells[0].Value.ToString());
-                    yil = DTIME.Date.Year.ToString();
-                    ay = DTIME.Date.Month.ToString();
-                    gun = DTIME.Date.Day.ToString();
+                tarih = yil + "-" + ay + "-" + gun;
 
-                    if (ay.Length <= 1)
-                    {
-                        ay = "0" + ay;
-                    }
+                DatabaseClass database = new DatabaseClass();
+                string sorgu = "SELECT `ID`, `TL`, `DOLAR`, `EURO`, `Tarih`, `P_ID` FROM `para_degerleri` WHERE Tarih = '" + tarih + "'";
+                List<ParaDegerleriGelir> gelirler = database.gelirDegerleri(sorgu);
 
-                    tarih = yil + "-" + ay + "-" + gun;
-                    
-                    DatabaseClass database = new DatabaseClass();
-                    string sorgu = "SELECT `ID`, `TL`, `DOLAR`, `EURO`, `Tarih`, `P_ID` FROM `para_degerleri` WHERE Tarih = '" + tarih + "'";
-
-                    foreach (ParaDegerleriGelir gelir in database.gelirDegerleri(sorgu))
+                if (gelirler.Count > 0)
+                {
+                    foreach (ParaDegerleriGelir gelir in gelirler)
                     {
                         if (gelir.P_ID == 1)
                         {
@@ -465,9 +560,30 @@ namespace KasaKontrol
                         }
                     }
 
-                    string sorgu2 = "SELECT `ID`, `TL`, `DOLAR`, `EURO`, `Tarih`, `P_ID` FROM `para_degerleri_giderler` WHERE Tarih = '" + tarih + "'";
+                    //gridviewde select yapsın
+                    /* dataGridgKasa.ClearSelection();
+                      int rowIndex = -1;
+                      string aranacakDeger = datetpislemtarihi.Text;
 
-                    foreach (ParaDegerleriGider gider in database.giderDegerleri(sorgu2))
+                      DataGridViewRow row = dataGridgKasa.Rows
+                          .Cast<DataGridViewRow>()
+                          .First(r => r.Cells[0].Value.ToString().Equals(aranacakDeger));
+
+                      rowIndex = row.Index;
+
+                      dataGridgKasa.Rows[rowIndex].Selected = true;*/
+                  
+                }
+                else
+                {
+                    degerleri_temizle();
+                }
+
+                string sorgu2 = "SELECT `ID`, `TL`, `DOLAR`, `EURO`, `Tarih`, `P_ID` FROM `para_degerleri_giderler` WHERE Tarih = '" + tarih + "'";
+                List < ParaDegerleriGider > giderler = database.giderDegerleri(sorgu2);
+
+                if (giderler.Count > 0) {
+                    foreach (ParaDegerleriGider gider in giderler)
                     {
                         if (gider.P_ID == 1)
                         {
@@ -520,59 +636,56 @@ namespace KasaKontrol
                         }
                     }
                 }
-
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-
-           
-                if (dataGridgKasa.Rows[0].Cells[0].Value != null)
+                else
                 {
-                    string yil, ay, gun;
-                    string secili_gun = dataGridgKasa.CurrentRow.Cells[0].Value.ToString();
-                    string[] kesim1 = secili_gun.Split(' ');
-                    string[] kesim2 = kesim1[0].Split('.');
+                    degerleri_temizle();
+                }
 
-                    yil = kesim2[2];
-                    ay = kesim2[1];
-                    gun = kesim2[0];
-                    string tarih = yil + "-" + ay + "-" + gun;
-                    string tarih2 = gun + "." + ay + "." +yil;
+        
 
-                DialogResult secenek = MessageBox.Show( tarih2 + " Tarihindeki kayıt güncellenecek"+"\n"+"Devam etmek istiyor musunuz?", "Bilgilendirme Penceresi", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            }
+            catch (Exception e21)
+            {
+                Console.Write(e21);
+            }
+        }
 
-                        if (secenek == DialogResult.Yes)
-                        {
-                            string isUpdateDate = tarih;
+        private void degerleri_temizle()
+        {
 
-                            ekleveGüncelle(isUpdateDate);
-                        }
-                        else if (secenek == DialogResult.No)
-                        {
-                            //Hayır seçeneğine tıklandığında çalıştırılacak kodlar
-                        }
+            tb_dukkangiderE.Text = ""; tb_dukkangiderD.Text = ""; tb_dukkangiderTL.Text = "";
+            tb_iadealinanE.Text = ""; tb_iadealinanD.Text = ""; tb_iadealinanTL.Text = "";
+            tb_firmaödE.Text = ""; tb_firmaödD.Text = ""; tb_firmaödTL.Text = "";
+            tb_pesinalinanE.Text = ""; tb_pesinalinanD.Text = ""; tb_pesinalinanTL.Text = "";
+            tb_ResulDödemeE.Text = ""; tb_ResulDödemeD.Text = ""; tb_ResulDödemeTL.Text = "";
+            tb_eleman1E.Text = ""; tb_eleman1D.Text = ""; tb_eleman1TL.Text = "";
+            tb_eleman2E.Text = ""; tb_eleman2D.Text = ""; tb_eleman2TL.Text = "";
 
-               }
-                else { MessageBox.Show("Stunlar boş olduğundan işlem yapılamaz", "Uyarı"); }
-            
+            tb_gunluksE.Text = ""; tb_gunluksD.Text = ""; tb_gunluksTL.Text = "";
+            tb_veresiyetahE.Text = ""; tb_veresiyetahD.Text = ""; tb_veresiyetahTL.Text = "";
+            tb_veresiyesE.Text = ""; tb_veresiyesD.Text = ""; tb_veresiyesTL.Text = "";
+            tb_kksatisE.Text = ""; tb_kksatisD.Text = ""; tb_kksatisTL.Text = "";
+            tbkaporaE.Text = ""; tbkaporaD.Text = ""; tbkaporaTL.Text = "";
 
 
         }
 
-        private void dataGridgKasa_CellClick_1(object sender, DataGridViewCellEventArgs e)
+
+        private void dataGridgKasa_SelectionChanged(object sender, EventArgs e)
         {
-            string tarih, yil ,ay, gun;
+          
+        }
+
+        private void veresiyeHesapla()
+        {
+
+            string tarih, yil, ay, gun;
             try
-            {                
+            {
 
                 if (dataGridgKasa.ColumnCount > 0)
                 {
-                    
+                    // dataGridgKasa_CellClick(sender,e);
                     string secili_tarih = dataGridgKasa.CurrentRow.Cells[0].Value.ToString();
 
                     DateTime DTIME = Convert.ToDateTime(secili_tarih);
@@ -584,22 +697,71 @@ namespace KasaKontrol
                     {
                         ay = "0" + ay;
                     }
+                    if (gun.Length <= 1)
+                    {
+                        gun = "0" + gun;
+                    }
 
                     tarih = yil + "-" + ay + "-" + gun;
 
                     DatabaseClass database = new DatabaseClass();
 
                     string sorgu =
-                        "select SUM(REPLACE(Euro, ',', '.')) as EuroT, SUM(REPLACE(Dolar, ',', '.')) as DolarT, SUM(REPLACE(TL, ',', '.')) as TLT FROM günlük_kasa WHERE Tarih <= '"+ tarih + "'";
+                        "select"+
+                        " SUM(CAST(REPLACE(TL, ',', '.') as DECIMAL(9, 2))) as TLT, " +
+                        " SUM(CAST(REPLACE(Euro, ',', '.') as DECIMAL(9,2))) EuroT, " +
+                         "SUM(CAST(REPLACE(Dolar, ',', '.') as DECIMAL(9, 2))) as DolarT " +
+                        
+                        "FROM günlük_kasa WHERE Tarih <= '" + tarih + "'";
 
                     dataGVKasaDevir.Columns.Clear();
                     dataGVKasaDevir.DataSource = database.ListData(sorgu);
-                                     
-                    dataGVKasaDevir.Columns[0].HeaderText = "EURO";
-                    dataGVKasaDevir.Columns[1].HeaderText = "DOLAR";
-                    dataGVKasaDevir.Columns[2].HeaderText = "TL";
 
-                    lblTarih.Text ="-" + Convert.ToDateTime(secili_tarih).ToShortDateString() + "-";
+                    dataGVKasaDevir.Columns[0].HeaderText = "TL";
+                    dataGVKasaDevir.Columns[1].HeaderText = "EURO";
+                    dataGVKasaDevir.Columns[2].HeaderText = "DOLAR";
+                    
+
+                    string sorguveresiye = "SELECT  " +
+                        "((SELECT SUM(CAST(REPLACE(TL, ',', '.') as DECIMAL(9, 2))) as tl2 FROM `para_degerleri` " +
+
+                            "WHERE P_ID = 2 AND Tarih <= '" + tarih +
+                        "') - " +
+                        "(SELECT SUM(CAST(REPLACE(TL, ',', '.') as DECIMAL(9, 2))) as tl2 FROM `para_degerleri` " +
+
+                            "WHERE P_ID = 3 AND Tarih <= '" + tarih +
+                        "') ) as tl, " +
+                        "((SELECT SUM(CAST(REPLACE(EURO, ',', '.') as DECIMAL(9, 2))) as tl2 FROM `para_degerleri` " +
+
+                            "WHERE P_ID = 2 AND Tarih <= '" + tarih +
+                        "')- " +
+                        "(SELECT SUM(CAST(REPLACE(EURO, ',', '.') as DECIMAL(9, 2))) as tl2 FROM `para_degerleri` " +
+
+                           " WHERE P_ID = 3 AND Tarih <= '" + tarih +
+                       "' ) ) as E, " +
+                        "((SELECT SUM(CAST(REPLACE(DOLAR, ',', '.') as DECIMAL(9, 2))) as tl2 FROM `para_degerleri` " +
+
+                           " WHERE P_ID = 2 AND Tarih <= '" + tarih +
+                       "' )- " +
+                        "(SELECT SUM(CAST(REPLACE(DOLAR, ',', '.') as DECIMAL(9, 2))) as tl2 FROM `para_degerleri` " +
+
+                         "   WHERE P_ID = 3 AND Tarih <= '" + tarih +
+                       "' ) ) as D " +
+
+                        "FROM para_degerleri WHERE Tarih = '" + tarih + "' GROUP BY Tarih";
+
+                    dataGridVeresiye.Columns.Clear();
+                    dataGridVeresiye.DataSource = database.ListData(sorguveresiye);
+
+                    dataGridVeresiye.Columns[0].HeaderText = " TL";
+                    dataGridVeresiye.Columns[1].HeaderText = "EURO";
+                    dataGridVeresiye.Columns[2].HeaderText = "DOLAR";
+
+                    lblTarih.Text = "-" + Convert.ToDateTime(secili_tarih).ToShortDateString() + "-";
+
+                    datetpislemtarihi.Text = dataGridgKasa.CurrentRow.Cells[0].Value.ToString();
+
+
                 }
 
             }
@@ -609,12 +771,7 @@ namespace KasaKontrol
 
         }
 
-        private void panel8_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dataGridgKasa_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void kasadevirHesapla()
         {
 
             string tarih, yil, ay, gun;
@@ -625,7 +782,7 @@ namespace KasaKontrol
                 {
 
                     string secili_tarih = dataGridgKasa.CurrentRow.Cells[0].Value.ToString();
-
+                    //dataGridgKasa_CellClick(sender, e);
                     DateTime DTIME = Convert.ToDateTime(secili_tarih);
                     yil = DTIME.Date.Year.ToString();
                     ay = DTIME.Date.Month.ToString();
@@ -635,22 +792,35 @@ namespace KasaKontrol
                     {
                         ay = "0" + ay;
                     }
+                    if (gun.Length <= 1)
+                    {
+                        gun = "0" + gun;
+                    }
+
 
                     tarih = yil + "-" + ay + "-" + gun;
 
-                    DatabaseClass database = new DatabaseClass();
+                    DatabaseClass database = new DatabaseClass();  
 
                     string sorgu =
-                        "select SUM(REPLACE(Euro, ',', '.')) as EuroT, SUM(REPLACE(Dolar, ',', '.')) as DolarT, SUM(REPLACE(TL, ',', '.')) as TLT FROM günlük_kasa WHERE Tarih <= '" + tarih + "'";
+                        "select "+
+                        " SUM(CAST(REPLACE(TL, ',', '.') as DECIMAL(9, 2))) as TLT, " + 
+                        " SUM(CAST(REPLACE(Euro, ',', '.') as DECIMAL(9,2))) EuroT,"+
+                         "SUM(CAST(REPLACE(Dolar, ',', '.') as DECIMAL(9, 2))) as DolarT "+
+                        
+                        "FROM günlük_kasa WHERE Tarih <= '" + tarih + "'";
 
                     dataGVKasaDevir.Columns.Clear();
                     dataGVKasaDevir.DataSource = database.ListData(sorgu);
 
-                    dataGVKasaDevir.Columns[0].HeaderText = "EURO";
-                    dataGVKasaDevir.Columns[1].HeaderText = "DOLAR";
-                    dataGVKasaDevir.Columns[2].HeaderText = "TL";
+                    dataGVKasaDevir.Columns[0].HeaderText = "TL";
+                    dataGVKasaDevir.Columns[1].HeaderText = "EURO";
+                    dataGVKasaDevir.Columns[2].HeaderText = "DOLAR";
+                    
 
                     lblTarih.Text = "-" + Convert.ToDateTime(secili_tarih).ToShortDateString() + "-";
+                    datetpislemtarihi.Text = dataGridgKasa.CurrentRow.Cells[0].Value.ToString();
+                    
                 }
 
             }

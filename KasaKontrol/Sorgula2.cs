@@ -43,12 +43,11 @@ namespace KasaKontrol
             displayRectangle.Height = this.dataGridView1.ColumnHeadersHeight / 2;
             this.dataGridView1.Invalidate(displayRectangle);
         
-
     }
 
         private void dataGridView1_Paint(object sender, PaintEventArgs e)
         {
-            string[] strArray = new string[] { "GÜNLÜK SATIŞ", "VERESİYE SATIŞ", "VERESİYE TAHSİLAT", "K.KARTI SATIŞ", "KAPORA" };
+            string[] strArray = new string[] { "GÜNLÜK SATIŞ ", "VERESİYE SATIŞ ", "VERESİYE TAHSİLAT", "K.KARTI SATIŞ", "KAPORA" };
 
             Rectangle rect = new Rectangle();
             Rectangle rectangle2 = new Rectangle();
@@ -61,7 +60,7 @@ namespace KasaKontrol
                 int width = rectangle2.Width;
                 rect.X += 1;
                 rect.Y += 1;
-                rect.Width = rect.Width * 5/2 +17 ;
+                rect.Width = rect.Width * 5/2 +15 ;
                 rect.Height = rect.Height / 2 - 2;
 
                /* Rectangle*rectanglePtr1 = (Rectangle*)ref rect;
@@ -72,16 +71,15 @@ namespace KasaKontrol
                 rectanglePtr3.Width = ((rect.Width * 2) + width) - 15;
                 Rectangle*rectanglePtr4 = (Rectangle*) ref rect;
                 rectanglePtr4.Height = (rect.Height / 2) - 1;*/
-                e.Graphics.FillRectangle(new SolidBrush(this.dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor), rect);
+                e.Graphics.FillRectangle(new SolidBrush(this.dataGridView1.ColumnHeadersDefaultCellStyle.BackColor), rect);
                 StringFormat format = new StringFormat
                 {
                     Alignment = StringAlignment.Center,
                     LineAlignment = StringAlignment.Center
                 };
-                e.Graphics.DrawString(strArray[i / 3], this.dataGridView1.ColumnHeadersDefaultCellStyle.Font, new SolidBrush(this.dataGridView1.ColumnHeadersDefaultCellStyle.SelectionForeColor), rect, format);
+                e.Graphics.DrawString(strArray[i / 3], this.dataGridView1.ColumnHeadersDefaultCellStyle.Font, new SolidBrush(this.dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor), rect, format);
             }
         
-
     }
 
         private void dataGridView1_Scroll(object sender, ScrollEventArgs e)
@@ -90,17 +88,22 @@ namespace KasaKontrol
             displayRectangle.Height = this.dataGridView1.ColumnHeadersHeight / 2;
             this.dataGridView1.Invalidate(displayRectangle);
        
-
     }
-
         private void Sorgula2_Load(object sender, EventArgs e)
         {
+           
             dateTimePicker1.Value = DateTime.Now.AddMonths(-1);
             dateTimePicker2.Value = DateTime.Now;
             
             bool tarihBazli = true;
             SayfayıDoldur(tarihBazli);
             raporDoldur();
+
+            //foreach (DataGridViewColumn column in dataGridgKasa.Columns)// header a tıklandığında sıralamasını değiştirmesin
+            //{
+            //    column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            //}
+            
         }
 
         private void SayfayıDoldur(bool tarihBazli)
@@ -109,28 +112,58 @@ namespace KasaKontrol
 
             datagrid1Doldur(database, tarihBazli);
             datagrid2Doldur(database, tarihBazli);
-            veresiyeDurumu();
-            toplamGoster();
-            veresiyeDoldur();
-            raporDoldur();
-
-
-
+            try
+            {
+                veresiyeDurumu();
+                toplamGoster();
+                veresiyeDoldur();
+                raporDoldur();
+            }
+            catch (Exception)
+            { 
+            }   
+            
             int num = 0;
             while (true)
             {
-                if (num >= (this.dataGridView1.Rows.Count - 1))
+                if (num >= (this.dataGridView1.Rows.Count  ))
                 {
-                    for (int i = 0; i < (this.dataGridView2.Rows.Count - 1); i++)
+                    for (int i = 0; i < (this.dataGridView2.Rows.Count ); i++)
                     {
                         DataGridViewCellStyle style2 = new DataGridViewCellStyle();
                         if (this.dataGridView2.Rows[i].Cells[0].Value.Equals("TOPLAM :"))
                         {
-                            style2.BackColor = Color.Blue;
+                            style2.BackColor = Color.Green;
                             style2.ForeColor = Color.White;
                         }
+                        if ((i == (this.dataGridView2.Rows.Count - 2)))
+                        {
+                            style2.BackColor = Color.White;
+                            style2.ForeColor = Color.White;
+                        }
+                        if ((i == (this.dataGridView2.Rows.Count - 3)))
+                        {
+                            style2.BackColor = Color.White;
+                            style2.ForeColor = Color.White;
+                        }
+
                         this.dataGridView2.Rows[i].DefaultCellStyle = style2;
                     }
+
+                    for (int i = 0; i < (this.dataGridView3.Rows.Count); i++)
+                    {
+                        DataGridViewCellStyle style3 = new DataGridViewCellStyle();
+                       
+                        if ((i == (this.dataGridView3.Rows.Count -1)))
+                        {
+                            style3.BackColor = Color.White;
+                            style3.ForeColor = Color.White;
+                        }
+                       
+
+                        this.dataGridView3.Rows[i].DefaultCellStyle = style3;
+                    }
+
                     return;
                 }
                 DataGridViewCellStyle style = new DataGridViewCellStyle();
@@ -139,12 +172,23 @@ namespace KasaKontrol
                     style.BackColor = Color.Green;
                     style.ForeColor = Color.White;
                 }
+                if ((num == (this.dataGridView1.Rows.Count - 2)))
+                {
+                    style.BackColor = Color.White;
+                    style.ForeColor = Color.White;
+                }
+
+                if ((num == (this.dataGridView1.Rows.Count - 3)))
+                {
+                    style.BackColor = Color.White;
+                    style.ForeColor = Color.White;
+                }
+
                 this.dataGridView1.Rows[num].DefaultCellStyle = style;
                 num++;
             }
 
         }
-
         private void veresiyeDoldur()
         {
             double veresiyeToplamE = 0;
@@ -194,20 +238,21 @@ namespace KasaKontrol
                     str3 = "0" + str3;
                 }
                 string[] textArray1 = new string[] { str3, "-", str2, "-", str };
-                string str4 = string.Concat(textArray1);
-                num = Convert.ToDouble(this.dataGridView1.Rows[num4].Cells[4].Value) - Convert.ToDouble(this.dataGridView1.Rows[num4].Cells[7].Value);
-                num2 = Convert.ToDouble(this.dataGridView1.Rows[num4].Cells[5].Value) - Convert.ToDouble(this.dataGridView1.Rows[num4].Cells[8].Value);
-                num3 = Convert.ToDouble(this.dataGridView1.Rows[num4].Cells[6].Value) - Convert.ToDouble(this.dataGridView1.Rows[num4].Cells[9].Value);
-                object[] values = new object[] { str4, num, num2, num3 };
-                this.dataGridView3.Rows.Add(values);
-                num4++;
+               
+                    string str4 = string.Concat(textArray1);
+                    num  = Math.Round(Convert.ToDouble(this.dataGridView1.Rows[num4].Cells[4].Value) - Convert.ToDouble(this.dataGridView1.Rows[num4].Cells[7].Value) , 2);
+                    num2 = Math.Round(Convert.ToDouble(this.dataGridView1.Rows[num4].Cells[5].Value) - Convert.ToDouble(this.dataGridView1.Rows[num4].Cells[8].Value) , 2);
+                    num3 = Math.Round(Convert.ToDouble(this.dataGridView1.Rows[num4].Cells[6].Value) - Convert.ToDouble(this.dataGridView1.Rows[num4].Cells[9].Value) , 2);
+                     object[] values = new object[] { str4, num, num2, num3 };
+                    this.dataGridView3.Rows.Add(values);
+                                   
+                 num4++;
             }
 
         }
 
         private void toplamGoster()
-        {
-            
+        {            
 
             double num = 0.0;
             double num2 = 0.0;
@@ -227,6 +272,27 @@ namespace KasaKontrol
             int num37 = 0;
             while (true)
             {
+                //if (num37 == this.dataGridView1.Rows.Count -1 )
+                //{
+                //    object[] values = new object[0x10];
+                //    values[0] = " ";
+                //    values[1] = " ";
+                //    values[2] = " ";
+                //    values[3] = " ";
+                //    values[4] = " ";
+                //    values[5] = " ";
+                //    values[6] = " ";
+                //    values[7] = " ";
+                //    values[8] = " ";
+                //    values[9] = " ";
+                //    values[10] = " ";  
+                //    values[11] = " ";
+                //    values[12] = " ";
+                //    values[13] = " ";
+                //    values[14] = " ";
+                //    values[15] = " ";
+                //    this.dataGridView1.Rows.Add(values);
+                //}
                 if (num37 >= this.dataGridView1.Rows.Count)
                 {
                     object[] values = new object[0x10];
@@ -304,28 +370,30 @@ namespace KasaKontrol
                                     this.dataGridView2.Rows.Add(objArray2);
                                     return;
                                 }
-                                num16 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[3].Value);
-                                num17 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[2].Value);
-                                num18 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[1].Value);
-                                num19 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[6].Value);
-                                num20 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[5].Value);
-                                num21 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[4].Value);
-                                num22 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[9].Value);
-                                num23 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[8].Value);
-                                num24 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[7].Value);
-                                num25 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[12].Value);
-                                num26 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[11].Value);
-                                num27 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[10].Value);
-                                num28 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[15].Value);
-                                num29 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[14].Value);
-                                num30 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[13].Value);
-                                num31 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[0x12].Value);
-                                num32 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[0x11].Value);
-                                num33 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[0x10].Value);
-                                num34 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[0x15].Value);
-                                num35 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[20].Value);
-                                num36 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[0x13].Value);
-                                num39++;
+                                
+                                    num16 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[3].Value);
+                                    num17 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[2].Value);
+                                    num18 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[1].Value);
+                                    num19 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[6].Value);
+                                    num20 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[5].Value);
+                                    num21 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[4].Value);
+                                    num22 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[9].Value);
+                                    num23 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[8].Value);
+                                    num24 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[7].Value);
+                                    num25 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[12].Value);
+                                    num26 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[11].Value);
+                                    num27 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[10].Value);
+                                    num28 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[15].Value);
+                                    num29 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[14].Value);
+                                    num30 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[13].Value);
+                                    num31 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[0x12].Value);
+                                    num32 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[0x11].Value);
+                                    num33 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[0x10].Value);
+                                    num34 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[0x15].Value);
+                                    num35 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[20].Value);
+                                    num36 += Convert.ToDouble(this.dataGridView2.Rows[num39].Cells[0x13].Value);
+                                    num39++;
+                                
                             }
                         }
                         if (this.dataGridView1.Rows[0].Cells[1].Value.ToString() == "TOPLAM")
@@ -352,10 +420,8 @@ namespace KasaKontrol
                 num15 += Convert.ToDouble(this.dataGridView1.Rows[num37].Cells[13].Value);
                 num37++;
             }
-            
-            
+                        
         }
-
         private void datagrid2Doldur(DatabaseClass database, bool tarihBazli)
         {
             string sorgu = "";
@@ -386,7 +452,10 @@ namespace KasaKontrol
             {
                 ay2 = "0" + ay2;
             }
-
+            if (gun2.Length <= 1)
+            {
+                gun2 = "0" + gun2;
+            }
             tarih_2 = yil2 + "-" + ay2 + "-" + gun2;
 
             String tarih1 = tarih;
@@ -395,7 +464,7 @@ namespace KasaKontrol
             
             if (tarihBazli)
             {
-                sorgu = "SELECT `ID`, `TL`, `DOLAR`, `EURO`, `Tarih`, `P_ID` FROM `para_degerleri_giderler` WHERE Tarih between '" + tarih1 + "' and '" + tarih2 + "' ";
+                sorgu = "SELECT `ID`, `TL`, `DOLAR`, `EURO`, `Tarih`, `P_ID` FROM `para_degerleri_giderler` WHERE Tarih between '" + tarih1 + "' and '" + tarih2 + "' ORDER by Tarih , P_ID";
             }
             else
             {
@@ -456,20 +525,23 @@ namespace KasaKontrol
                 }
                 if (gider.P_ID == 6)
                 {
-                    this.dataGridView2.Rows[num].Cells[0x10].Value = gider.EURO;
-                    this.dataGridView2.Rows[num].Cells[0x11].Value = gider.DOLAR;
-                    this.dataGridView2.Rows[num].Cells[0x12].Value = gider.TL;
+                    this.dataGridView2.Rows[num].Cells[16].Value = gider.EURO;
+                    this.dataGridView2.Rows[num].Cells[17].Value = gider.DOLAR;
+                    this.dataGridView2.Rows[num].Cells[18].Value = gider.TL;
                     continue;
                 }
                 if (gider.P_ID == 7)
                 {
-                    this.dataGridView2.Rows[num].Cells[0x13].Value = gider.EURO;
+                    this.dataGridView2.Rows[num].Cells[19].Value = gider.EURO;
                     this.dataGridView2.Rows[num].Cells[20].Value = gider.DOLAR;
-                    this.dataGridView2.Rows[num].Cells[0x15].Value = gider.TL;
+                    this.dataGridView2.Rows[num].Cells[21].Value = gider.TL;
                     num++;
                     
                 }
             }
+            this.dataGridView2.Rows.Add(this.dataGridView2.Rows[num - 1].Cells[0].Value.ToString());//boş satır için son tarih bilgisi eklendi satır başı için eklendi
+            this.dataGridView2.Rows.Add(this.dataGridView2.Rows[num - 1].Cells[0].Value.ToString());//boş satır için son tarih bilgisi eklendi satır başı için eklendi
+
             this.dataGridView2.Columns[0].HeaderText = "TARİH";
             this.dataGridView2.Columns[1].HeaderText = "EURO";
             this.dataGridView2.Columns[2].HeaderText = "DOLAR";
@@ -578,7 +650,7 @@ namespace KasaKontrol
             
             if (tarihBazli)
             {
-           sorgu = "SELECT `ID`, `TL`, `DOLAR`, `EURO`, `Tarih`, `P_ID` FROM `para_degerleri` WHERE Tarih between '"+ tarih1 + "' and '"+tarih2+ "' ORDER by Tarih";
+           sorgu = "SELECT `ID`, `TL`, `DOLAR`, `EURO`, `Tarih`, `P_ID` FROM `para_degerleri` WHERE Tarih between '"+ tarih1 + "' and '"+tarih2+ "' ORDER by Tarih , P_ID";
             }
             else
             {
@@ -603,8 +675,8 @@ namespace KasaKontrol
                         str4 = "0" + str4;
                     }
                     string[] textArray1 = new string[] { str4, "-", str3, "-", str2 };
-                    string str5 = string.Concat(textArray1);
-                    object[] values = new object[] { str5, gelir.EURO, gelir.DOLAR, gelir.TL };
+                    string _tarih = string.Concat(textArray1);
+                    object[] values = new object[] { _tarih, gelir.EURO, gelir.DOLAR, gelir.TL };
                     this.dataGridView1.Rows.Add(values);
                     continue;
                 }
@@ -636,7 +708,12 @@ namespace KasaKontrol
                     this.dataGridView1.Rows[num].Cells[15].Value = gelir.TL;
                     num++;
                 }
+                
             }
+
+            this.dataGridView1.Rows.Add(this.dataGridView1.Rows[num-1].Cells[0].Value.ToString());//boş satır için son tarih bilgisi eklendi satır başı için eklendi
+            this.dataGridView1.Rows.Add(this.dataGridView1.Rows[num - 1].Cells[0].Value.ToString());//boş satır için son tarih bilgisi eklendi satır başı için eklendi
+
             this.dataGridView1.Columns[0].HeaderText = "TARİH";
             this.dataGridView1.Columns[1].HeaderText = "EURO";
             this.dataGridView1.Columns[2].HeaderText = "DOLAR";
@@ -732,7 +809,7 @@ namespace KasaKontrol
                     Alignment = StringAlignment.Center,
                     LineAlignment = StringAlignment.Center
                 };
-                e.Graphics.DrawString(strArray[i / 3], this.dataGridView2.ColumnHeadersDefaultCellStyle.Font, new SolidBrush(this.dataGridView2.ColumnHeadersDefaultCellStyle.SelectionForeColor), rect, format);
+                e.Graphics.DrawString(strArray[i / 3], this.dataGridView2.ColumnHeadersDefaultCellStyle.Font, new SolidBrush(this.dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor), rect, format);
                 
             }
 

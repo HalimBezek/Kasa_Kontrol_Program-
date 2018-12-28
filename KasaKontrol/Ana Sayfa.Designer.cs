@@ -32,12 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label58 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
@@ -151,31 +151,30 @@
             this.lblTL = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.dataGridgKasa = new System.Windows.Forms.DataGridView();
+            this.TARİH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EURO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DOLAR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.dataGridVeresiye = new System.Windows.Forms.DataGridView();
+            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTarih = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_ayrintilikasa = new System.Windows.Forms.Button();
+            this.dataGVKasaDevir = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.TARİH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AYLAR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EURO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DOLAR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGVKasaDevir = new System.Windows.Forms.DataGridView();
-            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridVeresiye = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.pnlGiderler.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -188,8 +187,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridgKasa)).BeginInit();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGVKasaDevir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridVeresiye)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGVKasaDevir)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -1069,7 +1068,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Tan;
+            this.panel2.BackColor = System.Drawing.Color.AntiqueWhite;
             this.panel2.Controls.Add(this.lbl_toplamGidergoster);
             this.panel2.Controls.Add(this.lbl_toplamgelir);
             this.panel2.Controls.Add(this.panel4);
@@ -1111,7 +1110,7 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.BackColor = System.Drawing.Color.Blue;
+            this.panel4.BackColor = System.Drawing.Color.CornflowerBlue;
             this.panel4.Controls.Add(this.button1);
             this.panel4.Location = new System.Drawing.Point(456, 56);
             this.panel4.Name = "panel4";
@@ -1171,7 +1170,7 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Location = new System.Drawing.Point(0, 335);
             this.panel5.Name = "panel5";
@@ -1181,12 +1180,12 @@
             // panel6
             // 
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.BackColor = System.Drawing.Color.Tan;
+            this.panel6.BackColor = System.Drawing.Color.AntiqueWhite;
             this.panel6.Controls.Add(this.button2);
             this.panel6.Controls.Add(this.btn_ekle);
             this.panel6.Controls.Add(this.btn_temizle);
             this.panel6.ForeColor = System.Drawing.Color.Black;
-            this.panel6.Location = new System.Drawing.Point(836, 3);
+            this.panel6.Location = new System.Drawing.Point(838, 3);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(395, 39);
             this.panel6.TabIndex = 8;
@@ -1194,7 +1193,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button2.BackColor = System.Drawing.Color.CornflowerBlue;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.Location = new System.Drawing.Point(212, 4);
@@ -1208,7 +1207,7 @@
             // btn_ekle
             // 
             this.btn_ekle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_ekle.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btn_ekle.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btn_ekle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_ekle.ForeColor = System.Drawing.Color.Black;
             this.btn_ekle.Location = new System.Drawing.Point(38, 4);
@@ -1222,7 +1221,7 @@
             // btn_temizle
             // 
             this.btn_temizle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_temizle.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btn_temizle.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btn_temizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_temizle.ForeColor = System.Drawing.Color.Black;
             this.btn_temizle.Location = new System.Drawing.Point(131, 4);
@@ -1236,7 +1235,7 @@
             // btn_listele
             // 
             this.btn_listele.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_listele.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btn_listele.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btn_listele.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_listele.Location = new System.Drawing.Point(1055, 399);
             this.btn_listele.Name = "btn_listele";
@@ -1249,9 +1248,9 @@
             // Sil
             // 
             this.Sil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Sil.BackColor = System.Drawing.Color.DodgerBlue;
+            this.Sil.BackColor = System.Drawing.Color.CornflowerBlue;
             this.Sil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Sil.Location = new System.Drawing.Point(1144, 399);
+            this.Sil.Location = new System.Drawing.Point(1155, 399);
             this.Sil.Name = "Sil";
             this.Sil.Size = new System.Drawing.Size(75, 34);
             this.Sil.TabIndex = 2;
@@ -1264,9 +1263,9 @@
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.Color.Red;
             this.button3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.Location = new System.Drawing.Point(1093, 567);
+            this.button3.Location = new System.Drawing.Point(1092, 574);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 41);
+            this.button3.Size = new System.Drawing.Size(138, 39);
             this.button3.TabIndex = 10;
             this.button3.Text = "PROGRAMI KAPAT";
             this.button3.UseVisualStyleBackColor = false;
@@ -1280,9 +1279,9 @@
             this.panel8.Controls.Add(this.label52);
             this.panel8.Controls.Add(this.panel7);
             this.panel8.Controls.Add(this.dataGridgKasa);
-            this.panel8.Location = new System.Drawing.Point(561, 394);
+            this.panel8.Location = new System.Drawing.Point(589, 394);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(488, 223);
+            this.panel8.Size = new System.Drawing.Size(460, 223);
             this.panel8.TabIndex = 11;
             this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
             // 
@@ -1307,14 +1306,14 @@
             this.panel7.Controls.Add(this.label53);
             this.panel7.Location = new System.Drawing.Point(4, 197);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(477, 22);
+            this.panel7.Size = new System.Drawing.Size(449, 22);
             this.panel7.TabIndex = 13;
             // 
             // lblDolar
             // 
             this.lblDolar.AutoSize = true;
             this.lblDolar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblDolar.Location = new System.Drawing.Point(433, 2);
+            this.lblDolar.Location = new System.Drawing.Point(374, 3);
             this.lblDolar.Name = "lblDolar";
             this.lblDolar.Size = new System.Drawing.Size(32, 17);
             this.lblDolar.TabIndex = 53;
@@ -1324,7 +1323,7 @@
             // 
             this.lblEuro.AutoSize = true;
             this.lblEuro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblEuro.Location = new System.Drawing.Point(329, 2);
+            this.lblEuro.Location = new System.Drawing.Point(259, 1);
             this.lblEuro.Name = "lblEuro";
             this.lblEuro.Size = new System.Drawing.Size(32, 17);
             this.lblEuro.TabIndex = 52;
@@ -1334,7 +1333,7 @@
             // 
             this.lblTL.AutoSize = true;
             this.lblTL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTL.Location = new System.Drawing.Point(224, 3);
+            this.lblTL.Location = new System.Drawing.Point(149, 2);
             this.lblTL.Name = "lblTL";
             this.lblTL.Size = new System.Drawing.Size(42, 17);
             this.lblTL.TabIndex = 51;
@@ -1352,17 +1351,17 @@
             // 
             // dataGridgKasa
             // 
+            this.dataGridgKasa.AllowUserToAddRows = false;
             dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.dataGridgKasa.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridgKasa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridgKasa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridgKasa.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.dataGridgKasa.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridgKasa.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridgKasa.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.Empty;
             dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -1372,7 +1371,6 @@
             this.dataGridgKasa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridgKasa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TARİH,
-            this.AYLAR,
             this.TL,
             this.EURO,
             this.DOLAR});
@@ -1387,18 +1385,48 @@
             this.dataGridgKasa.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.dataGridgKasa.Location = new System.Drawing.Point(5, 21);
             this.dataGridgKasa.Name = "dataGridgKasa";
+            this.dataGridgKasa.ReadOnly = true;
             dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.Empty;
             dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridgKasa.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
-            this.dataGridgKasa.Size = new System.Drawing.Size(476, 174);
+            this.dataGridgKasa.RowTemplate.ReadOnly = true;
+            this.dataGridgKasa.Size = new System.Drawing.Size(448, 174);
             this.dataGridgKasa.TabIndex = 12;
             this.dataGridgKasa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridgKasa_CellClick_1);
             this.dataGridgKasa.SelectionChanged += new System.EventHandler(this.dataGridgKasa_SelectionChanged);
+            this.dataGridgKasa.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.dataGridgKasa_ControlAdded);
+            // 
+            // TARİH
+            // 
+            this.TARİH.HeaderText = "TARİH";
+            this.TARİH.Name = "TARİH";
+            this.TARİH.ReadOnly = true;
+            this.TARİH.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TL
+            // 
+            this.TL.HeaderText = "TL";
+            this.TL.Name = "TL";
+            this.TL.ReadOnly = true;
+            this.TL.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // EURO
+            // 
+            this.EURO.HeaderText = "EURO";
+            this.EURO.Name = "EURO";
+            this.EURO.ReadOnly = true;
+            this.EURO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // DOLAR
+            // 
+            this.DOLAR.HeaderText = "DOLAR";
+            this.DOLAR.Name = "DOLAR";
+            this.DOLAR.ReadOnly = true;
+            this.DOLAR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // panel9
             // 
@@ -1412,7 +1440,7 @@
             this.panel9.Controls.Add(this.dataGVKasaDevir);
             this.panel9.Location = new System.Drawing.Point(3, 394);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(552, 223);
+            this.panel9.Size = new System.Drawing.Size(570, 223);
             this.panel9.TabIndex = 12;
             // 
             // panel10
@@ -1421,9 +1449,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel10.Controls.Add(this.label12);
             this.panel10.Controls.Add(this.label13);
-            this.panel10.Location = new System.Drawing.Point(4, 111);
+            this.panel10.Location = new System.Drawing.Point(24, 111);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(135, 51);
+            this.panel10.Size = new System.Drawing.Size(133, 51);
             this.panel10.TabIndex = 18;
             // 
             // label12
@@ -1446,182 +1474,6 @@
             this.label13.Size = new System.Drawing.Size(108, 13);
             this.label13.TabIndex = 8;
             this.label13.Text = "(V. Satış - V. Tahsilat)";
-            // 
-            // lblTarih
-            // 
-            this.lblTarih.AutoSize = true;
-            this.lblTarih.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTarih.Location = new System.Drawing.Point(34, 7);
-            this.lblTarih.Name = "lblTarih";
-            this.lblTarih.Size = new System.Drawing.Size(41, 17);
-            this.lblTarih.TabIndex = 16;
-            this.lblTarih.Text = "tarih";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(3, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 15);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "KASA DEVİR = >";
-            // 
-            // btn_ayrintilikasa
-            // 
-            this.btn_ayrintilikasa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_ayrintilikasa.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btn_ayrintilikasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_ayrintilikasa.Location = new System.Drawing.Point(6, 171);
-            this.btn_ayrintilikasa.Name = "btn_ayrintilikasa";
-            this.btn_ayrintilikasa.Size = new System.Drawing.Size(202, 49);
-            this.btn_ayrintilikasa.TabIndex = 8;
-            this.btn_ayrintilikasa.Text = "AYRINTILI KASA GÖSTER";
-            this.btn_ayrintilikasa.UseVisualStyleBackColor = false;
-            this.btn_ayrintilikasa.Click += new System.EventHandler(this.btn_ayrintilikasa_Click);
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(1114, 501);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(116, 20);
-            this.dateTimePicker2.TabIndex = 15;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.CustomFormat = "";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(1112, 475);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(118, 20);
-            this.dateTimePicker1.TabIndex = 14;
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label10.Location = new System.Drawing.Point(1063, 459);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(110, 13);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "TARİH ARALIĞI : ";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(1063, 481);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "BAŞ:";
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label11.Location = new System.Drawing.Point(1065, 506);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(31, 13);
-            this.label11.TabIndex = 17;
-            this.label11.Text = "BİT:";
-            // 
-            // TARİH
-            // 
-            this.TARİH.HeaderText = "TARİH";
-            this.TARİH.Name = "TARİH";
-            // 
-            // AYLAR
-            // 
-            this.AYLAR.HeaderText = "AYLAR";
-            this.AYLAR.Name = "AYLAR";
-            // 
-            // TL
-            // 
-            this.TL.HeaderText = "TL";
-            this.TL.Name = "TL";
-            // 
-            // EURO
-            // 
-            this.EURO.HeaderText = "EURO";
-            this.EURO.Name = "EURO";
-            // 
-            // DOLAR
-            // 
-            this.DOLAR.HeaderText = "DOLAR";
-            this.DOLAR.Name = "DOLAR";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "DOLAR";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "EURO";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "TL";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGVKasaDevir
-            // 
-            this.dataGVKasaDevir.AllowUserToAddRows = false;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dataGVKasaDevir.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
-            this.dataGVKasaDevir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGVKasaDevir.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGVKasaDevir.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.dataGVKasaDevir.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGVKasaDevir.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
-            this.dataGVKasaDevir.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGVKasaDevir.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGVKasaDevir.DefaultCellStyle = dataGridViewCellStyle30;
-            this.dataGVKasaDevir.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.dataGVKasaDevir.Location = new System.Drawing.Point(144, 41);
-            this.dataGVKasaDevir.Name = "dataGVKasaDevir";
-            this.dataGVKasaDevir.Size = new System.Drawing.Size(405, 51);
-            this.dataGVKasaDevir.TabIndex = 13;
-            // 
-            // Column25
-            // 
-            this.Column25.HeaderText = "DOLAR";
-            this.Column25.Name = "Column25";
-            // 
-            // Column24
-            // 
-            this.Column24.HeaderText = "EURO";
-            this.Column24.Name = "Column24";
-            // 
-            // Column26
-            // 
-            this.Column26.HeaderText = "TL";
-            this.Column26.Name = "Column26";
             // 
             // dataGridVeresiye
             // 
@@ -1654,10 +1506,169 @@
             dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridVeresiye.DefaultCellStyle = dataGridViewCellStyle27;
             this.dataGridVeresiye.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.dataGridVeresiye.Location = new System.Drawing.Point(143, 111);
+            this.dataGridVeresiye.Location = new System.Drawing.Point(179, 111);
             this.dataGridVeresiye.Name = "dataGridVeresiye";
-            this.dataGridVeresiye.Size = new System.Drawing.Size(406, 44);
+            this.dataGridVeresiye.ReadOnly = true;
+            this.dataGridVeresiye.Size = new System.Drawing.Size(388, 44);
             this.dataGridVeresiye.TabIndex = 17;
+            // 
+            // Column26
+            // 
+            this.Column26.HeaderText = "TL";
+            this.Column26.Name = "Column26";
+            this.Column26.ReadOnly = true;
+            // 
+            // Column24
+            // 
+            this.Column24.HeaderText = "EURO";
+            this.Column24.Name = "Column24";
+            this.Column24.ReadOnly = true;
+            // 
+            // Column25
+            // 
+            this.Column25.HeaderText = "DOLAR";
+            this.Column25.Name = "Column25";
+            this.Column25.ReadOnly = true;
+            // 
+            // lblTarih
+            // 
+            this.lblTarih.AutoSize = true;
+            this.lblTarih.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTarih.Location = new System.Drawing.Point(141, 3);
+            this.lblTarih.Name = "lblTarih";
+            this.lblTarih.Size = new System.Drawing.Size(41, 17);
+            this.lblTarih.TabIndex = 16;
+            this.lblTarih.Text = "tarih";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(49, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 15);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "KASA DEVİR = >";
+            // 
+            // btn_ayrintilikasa
+            // 
+            this.btn_ayrintilikasa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_ayrintilikasa.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btn_ayrintilikasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_ayrintilikasa.Location = new System.Drawing.Point(21, 177);
+            this.btn_ayrintilikasa.Name = "btn_ayrintilikasa";
+            this.btn_ayrintilikasa.Size = new System.Drawing.Size(202, 42);
+            this.btn_ayrintilikasa.TabIndex = 8;
+            this.btn_ayrintilikasa.Text = "AYRINTILI KASA GÖSTER";
+            this.btn_ayrintilikasa.UseVisualStyleBackColor = false;
+            this.btn_ayrintilikasa.Click += new System.EventHandler(this.btn_ayrintilikasa_Click);
+            // 
+            // dataGVKasaDevir
+            // 
+            this.dataGVKasaDevir.AllowUserToAddRows = false;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dataGVKasaDevir.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
+            this.dataGVKasaDevir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGVKasaDevir.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGVKasaDevir.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGVKasaDevir.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGVKasaDevir.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            this.dataGVKasaDevir.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGVKasaDevir.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGVKasaDevir.DefaultCellStyle = dataGridViewCellStyle30;
+            this.dataGVKasaDevir.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.dataGVKasaDevir.Location = new System.Drawing.Point(179, 38);
+            this.dataGVKasaDevir.Name = "dataGVKasaDevir";
+            this.dataGVKasaDevir.ReadOnly = true;
+            this.dataGVKasaDevir.Size = new System.Drawing.Size(388, 51);
+            this.dataGVKasaDevir.TabIndex = 13;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "TL";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "EURO";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "DOLAR";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(1101, 501);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(129, 20);
+            this.dateTimePicker2.TabIndex = 15;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePicker1.CustomFormat = "";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(1101, 475);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(129, 20);
+            this.dateTimePicker1.TabIndex = 14;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label10.Location = new System.Drawing.Point(1052, 447);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(110, 13);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "TARİH ARALIĞI : ";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.Location = new System.Drawing.Point(1052, 481);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "BAŞ:";
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label11.Location = new System.Drawing.Point(1052, 507);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(31, 13);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "BİT:";
             // 
             // Form1
             // 
@@ -1701,8 +1712,8 @@
             this.panel9.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGVKasaDevir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridVeresiye)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGVKasaDevir)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1835,11 +1846,6 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TARİH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AYLAR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EURO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DOLAR;
         private System.Windows.Forms.DataGridView dataGridVeresiye;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
@@ -1848,6 +1854,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TARİH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EURO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DOLAR;
     }
 }
 

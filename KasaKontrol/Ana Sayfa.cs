@@ -13,6 +13,10 @@ namespace KasaKontrol
 {
     public partial class Form1 : Form
     {
+       // public string isUpdatedate = "";
+        private string isUpdateDate ="";
+       // private object isUpdatedate;
+
         public Form1()
         {
             InitializeComponent();
@@ -30,13 +34,27 @@ namespace KasaKontrol
             }
             else { }
         }
-        private void ekleveGüncelle(String isUpdatedate)
+        private void ekleveGüncelle(String isUpdatedate2)
         {  
             string yil, ay, gun, tarih;
-            string isUpdateDate;
-            if (!isUpdatedate.Equals(""))
+             isUpdateDate = isUpdatedate2;
+            if (!isUpdateDate.ToString().Equals(""))
             {
-                isUpdateDate = isUpdatedate;
+                DateTime DTIME2 = Convert.ToDateTime(isUpdateDate.ToString());
+                yil = DTIME2.Date.Year.ToString();
+                ay = DTIME2.Date.Month.ToString();
+                gun = DTIME2.Date.Day.ToString();
+
+               // isUpdateDate = isUpdatedate2;
+                if (ay.Length <= 1)
+                {
+                    ay = "0" + ay;
+                }
+                if (gun.Length <= 1)
+                {
+                    gun = "0" + gun;
+                }
+                isUpdateDate = yil + "-" + ay + "-" + gun;
             }
             else
             {
@@ -57,7 +75,7 @@ namespace KasaKontrol
             double veresiyeTahsilatDolar; double.TryParse(tb_veresiyetahD.Text, out veresiyeTahsilatDolar);// = Convert.ToDouble(tb_veresiyetahD.Text);
             double veresiyeTahsilatTL; double.TryParse(tb_veresiyetahTL.Text, out veresiyeTahsilatTL);// = Convert.ToDouble(tb_veresiyetahTL.Text);
 
-            double k_kartiSatisEU; double.TryParse(tb_kksatisE.Text, out k_kartiSatisEU);// = Convert.ToDouble(tb_kksatisE.Text); //dahil edilmedi
+            double k_kartiSatisEU; double.TryParse(tb_kksatisE.Text, out k_kartiSatisEU);// = Convert.ToDouble(tb_kksatisE.Text); //dahil edilmedi//dahil edilecek
             double k_kartiSatisDolar; double.TryParse(tb_kksatisD.Text, out k_kartiSatisDolar);// = Convert.ToDouble(tb_kksatisD.Text);
             double k_kartiSatisTL; double.TryParse(tb_kksatisTL.Text, out k_kartiSatisTL);// = Convert.ToDouble(tb_kksatisTL.Text);
 
@@ -65,14 +83,12 @@ namespace KasaKontrol
             double kaporaDolar; double.TryParse(tbkaporaD.Text, out kaporaDolar);// = Convert.ToDouble(tbkaporaD.Text);
             double kaporaTL; double.TryParse(tbkaporaTL.Text, out kaporaTL);// = Convert.ToDouble(tbkaporaTL.Text);
 
-            double toplamGelirEU = gunluksatisEU + veresiyeTahsilatEU + kaporaEU;
-            double toplamGelirDolar= gunluksatisDolar + veresiyeTahsilatDolar + kaporaDolar;
-            double toplamGelirTL  = gunluksatisTL + veresiyeTahsilatTL + kaporaTL;
-
-
+            double toplamGelirEU = gunluksatisEU + veresiyeTahsilatEU + kaporaEU + k_kartiSatisEU; //k-kartı satış sonradan eklendi
+            double toplamGelirDolar= gunluksatisDolar + veresiyeTahsilatDolar + kaporaDolar + k_kartiSatisDolar;
+            double toplamGelirTL  = gunluksatisTL + veresiyeTahsilatTL + kaporaTL + k_kartiSatisTL;
+            
             lbl_toplamgelir.Text = "Günlük Toplam Gelir=  €:"+toplamGelirEU + "  $:"+toplamGelirDolar + "  TL:"+toplamGelirTL ;
-
-
+                        
             ////////GİDERLER
 
             double dukkangiderleriEU; double.TryParse(tb_dukkangiderE.Text, out dukkangiderleriEU);// = Convert.ToDouble(tb_dukkangiderE.Text);
@@ -83,9 +99,9 @@ namespace KasaKontrol
             double iadealinanDolar; double.TryParse(tb_iadealinanD.Text, out iadealinanDolar);// = Convert.ToDouble(tb_iadealinanD.Text);
             double iadealinanTL; double.TryParse(tb_iadealinanTL.Text, out iadealinanTL);// = Convert.ToDouble(tb_iadealinanTL.Text);
 
-            double firmaödemeleriEU; double.TryParse(tb_firmaödE.Text, out firmaödemeleriEU);// = Convert.ToDouble(tb_firmaödE.Text);
-            double firmaödemeleriDolar; double.TryParse(tb_firmaödD.Text, out firmaödemeleriDolar);// = Convert.ToDouble(tb_firmaödD.Text);
-            double firmaödemeleriTL; double.TryParse(tb_firmaödTL.Text, out firmaödemeleriTL);// = Convert.ToDouble(tb_firmaödTL.Text);
+            double firmaödemeleriEU; double.TryParse(tb_firmaödE.Text, out firmaödemeleriEU);// = Convert.ToDouble(tb_firmaödE.Text);             
+            double firmaödemeleriDolar; double.TryParse(tb_firmaödD.Text, out firmaödemeleriDolar);// = Convert.ToDouble(tb_firmaödD.Text);             
+            double firmaödemeleriTL; double.TryParse(tb_firmaödTL.Text, out firmaödemeleriTL);// = Convert.ToDouble(tb_firmaödTL.Text);             
 
             double pesinalinanödemeEU; double.TryParse(tb_pesinalinanE.Text, out pesinalinanödemeEU);// = Convert.ToDouble(tb_pesinalinanE.Text);
             double pesinalinanödemeDolar; double.TryParse(tb_pesinalinanD.Text, out pesinalinanödemeDolar);// = Convert.ToDouble(tb_pesinalinanD.Text);
@@ -122,10 +138,6 @@ namespace KasaKontrol
 
             //lbltoplamGoster.Text = "***********Günlük Kasa : €:" + gunlukKasaEU + "  $:" + gunlukKasaD +
             //    "  TL:" + gunlukKasaTL + "  ************";
-
-            
-            
-            
             
 
             DateTime DTIME = Convert.ToDateTime(datetpislemtarihi.Text);
@@ -187,7 +199,6 @@ namespace KasaKontrol
                 MessageBox.Show("Hata oluştu. Aynı tarihte kayıt olmadığından emin olun.", "Bilgilendirme");
          
             }
-            
         }
 
         private void btn_listele_Click(object sender, EventArgs e)
@@ -197,15 +208,12 @@ namespace KasaKontrol
 
         private void listele()
         {
-
-
             string yil, ay, gun, tarih, tarih_2;
 
             dataGridgKasa.Columns.Clear();
 
             DatabaseClass database = new DatabaseClass();
             //
-
             DateTime DTIME = dateTimePicker1.Value;
             yil = DTIME.Date.Year.ToString();
             ay = DTIME.Date.Month.ToString();
@@ -265,15 +273,15 @@ namespace KasaKontrol
             }
             else secili_ay = "0" + ay + "/" + yil;*/
 
-            string sql = "Select `Tarih`, `aylar`, `TL`, `Euro`, `Dolar` from günlük_kasa WHERE Tarih between '" + tarih1 + "' and '" + tarih2 + "' ORDER BY Tarih"; ;
+            string sql = "Select `Tarih`, `TL`, `Euro`, `Dolar` from günlük_kasa WHERE Tarih between '" + tarih1 + "' and '" + tarih2 + "' ORDER BY Tarih"; ;
 
             dataGridgKasa.DataSource = database.ListData(sql);
 
             dataGridgKasa.Columns[0].HeaderText = "TARİH";
-            dataGridgKasa.Columns[1].HeaderText = "AYLAR";
-            dataGridgKasa.Columns[2].HeaderText = "TL";
-            dataGridgKasa.Columns[3].HeaderText = "EURO";
-            dataGridgKasa.Columns[4].HeaderText = "DOLAR";
+         
+            dataGridgKasa.Columns[1].HeaderText = "TL";
+            dataGridgKasa.Columns[2].HeaderText = "EURO";
+            dataGridgKasa.Columns[3].HeaderText = "DOLAR";
 
 
             // dataGridgKasa.Columns[0].Visible = false;
@@ -286,9 +294,9 @@ namespace KasaKontrol
 
                 for (int i = 0; i < dataGridgKasa.Rows.Count; i++)
                 {
-                    veresiyeToplamTl += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[2].Value);
-                    veresiyeToplamE += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[3].Value);
-                    veresiyeToplamD += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[4].Value);
+                    veresiyeToplamTl += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[1].Value);
+                    veresiyeToplamE += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[2].Value);
+                    veresiyeToplamD += Convert.ToDouble(dataGridgKasa.Rows[i].Cells[3].Value);
 
                 }
 
@@ -302,9 +310,8 @@ namespace KasaKontrol
 
                 dataGridgKasa.ClearSelection();
                 // dataGridgKasa.Rows[dataGridgKasa.RowCount - 2].Selected = true;
-
-
-                int nRowIndex = dataGridgKasa.Rows.Count - 2;
+                
+                int nRowIndex = dataGridgKasa.Rows.Count - 1;
                 int nColumnIndex = 2;
 
                 dataGridgKasa.Rows[nRowIndex].Selected = true;
@@ -327,7 +334,6 @@ namespace KasaKontrol
         private void btn_temizle_Click(object sender, EventArgs e)
         {
             degerleri_temizle();
-
         }
 
         private void btn_ayrintilikasa_Click(object sender, EventArgs e)
@@ -350,8 +356,7 @@ namespace KasaKontrol
             if (e.KeyChar!=44)
             {
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-            }
-            
+            }           
           
         }
 
@@ -402,8 +407,7 @@ namespace KasaKontrol
             else if (secenek == DialogResult.No)
             {
                 //Hayır seçeneğine tıklandığında çalıştırılacak kodlar
-            }
-            
+            }            
            
         }
 
@@ -411,7 +415,6 @@ namespace KasaKontrol
         {
 
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             dateTimePicker1.Value = DateTime.Now.AddMonths(-1);
@@ -419,6 +422,10 @@ namespace KasaKontrol
             //datetpislemtarihi.MaxDate = new System.DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Month , 0, 0, 0, 0);
             //  datetpislemtarihi.MinDate = new System.DateTime(DateTime.Now.Year, DateTime.Now.Month,1, 0, 0, 0, 0);
             listele();
+            foreach (DataGridViewColumn column in dataGridgKasa.Columns)// header a tıklandığında sıralamasını değiştirmesin
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
       
         private void button2_Click(object sender, EventArgs e)
@@ -470,13 +477,10 @@ namespace KasaKontrol
                }
                 else { MessageBox.Show("Stunlar boş olduğundan işlem yapılamaz", "Uyarı"); }
             
-
-
         }
 
         private void dataGridgKasa_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            
+        {           
 
             kasadevirHesapla();
             veresiyeHesapla();
@@ -666,11 +670,8 @@ namespace KasaKontrol
             tb_veresiyesE.Text = ""; tb_veresiyesD.Text = ""; tb_veresiyesTL.Text = "";
             tb_kksatisE.Text = ""; tb_kksatisD.Text = ""; tb_kksatisTL.Text = "";
             tbkaporaE.Text = ""; tbkaporaD.Text = ""; tbkaporaTL.Text = "";
-
-
+            
         }
-
-
         private void dataGridgKasa_SelectionChanged(object sender, EventArgs e)
         {
           
@@ -761,7 +762,6 @@ namespace KasaKontrol
 
                     datetpislemtarihi.Text = dataGridgKasa.CurrentRow.Cells[0].Value.ToString();
 
-
                 }
 
             }
@@ -828,6 +828,11 @@ namespace KasaKontrol
             {
             }
 
+        }
+
+        private void dataGridgKasa_ControlAdded(object sender, ControlEventArgs e)
+        {
+ 
         }
     }
 }

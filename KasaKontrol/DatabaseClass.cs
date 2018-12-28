@@ -24,7 +24,7 @@ namespace KasaKontrol
 
             build.Server = "127.0.0.1";//	localhost
             build.UserID = "root";
-            build.Password = "";
+            build.Password = "root";
             build.Database = "kasatakip";
             build.Port = 3306;
             build.SslMode = MySqlSslMode.None;
@@ -140,13 +140,11 @@ namespace KasaKontrol
                 degerler.Add(valueDL);
                 degerler.Add(valueTL);
 
-
             }
             catch (Exception)
             {
 
             }
-
 
             return degerler;
         }
@@ -158,8 +156,7 @@ namespace KasaKontrol
             {
 
                 ConnectSql();
-                baglanti.Open();
-                
+                baglanti.Open();                
 
                 string sql = sorgu;
                 MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -178,9 +175,7 @@ namespace KasaKontrol
                     giderler.P_ID = Convert.ToInt32(dataReader["P_ID"]);
                     giderler.Id = Convert.ToInt32(dataReader["ID"]);
 
-                    degerler.Add(giderler);
-
-                    
+                    degerler.Add(giderler);                    
                 }
                 dataReader.Close();
             }
@@ -189,8 +184,6 @@ namespace KasaKontrol
             {
 
             }
-
-
             return degerler;
         }
 
@@ -208,8 +201,6 @@ namespace KasaKontrol
                sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + dukkangiderleriEU + "','" + dukkangiderleriDolar + "','" + dukkangiderleriTL + "'," + v + ")";
 
             }
-
-
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
 
             try
@@ -240,8 +231,6 @@ namespace KasaKontrol
                 sql = "INSERT INTO para_degerleri_giderler (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + iadealinanEU + "','" + iadealinanDolar + "','" + iadealinanTL + "'," + v + ")";
 
             }
-
-
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
 
             try
@@ -431,8 +420,7 @@ namespace KasaKontrol
             {
                 sql = "INSERT INTO para_degerleri (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + kaporaEU + "','" + kaporaDolar + "','" + kaporaTL + "'," + v + ")";
 
-            }
-            
+            }           
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
 
@@ -464,9 +452,7 @@ namespace KasaKontrol
                 sql = "INSERT INTO para_degerleri (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + veresiyeTahsilatEU + "','" + veresiyeTahsilatDolar + "','" + veresiyeTahsilatTL + "'," + v + ")";
 
             }
-
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
-
             try
             {
                 komut.ExecuteNonQuery();
@@ -494,8 +480,7 @@ namespace KasaKontrol
             {
                 sql = "INSERT INTO para_degerleri (Tarih,Euro, Dolar, TL, P_ID) VALUES ('" + tarih + "','" + gunluksatisEU + "','" + gunluksatisDolar + "','" + gunluksatisTL + "'," + v + ")";
 
-            }
-            
+            }           
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
 
@@ -511,7 +496,6 @@ namespace KasaKontrol
                 return "Bir hata oluştu, aynı tarihte kayıt olmadığına dikkat edin. ";
             }
         }
-
         internal string kayitEklePAlinanO(string tarih, double pesinalinanödemeEU, double pesinalinanödemeDolar, double pesinalinanödemeTL, int v, string isUpdateDate)
         {
             ConnectSql();
